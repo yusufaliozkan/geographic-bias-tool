@@ -1,0 +1,208 @@
+,Rank,Country Name,Country Code 3,Year,GNI,Country Code 2,name,incomeLevel
+0,1,Burundi,BDI,2023,230.0,BI,Burundi,Low income
+1,2,Afghanistan,AFG,2022,360.0,AF,Afghanistan,Low income
+2,3,Central African Republic,CAF,2023,470.0,CF,Central African Republic,Low income
+3,4,Madagascar,MDG,2023,530.0,MG,Madagascar,Low income
+4,5,Mozambique,MOZ,2023,530.0,MZ,Mozambique,Low income
+5,6,Sierra Leone,SLE,2023,560.0,SL,Sierra Leone,Low income
+6,7,Syrian Arab Republic,SYR,2021,560.0,SY,Syrian Arab Republic,Low income
+7,8,Niger,NER,2023,600.0,NE,Niger,Low income
+8,9,Somalia,SOM,2023,610.0,SO,Somalia,Low income
+9,10,Eritrea,ERI,2011,610.0,ER,Eritrea,Low income
+10,11,Malawi,MWI,2023,640.0,MW,Malawi,Low income
+11,12,"Congo, Dem. Rep.",COD,2023,660.0,CD,"Congo, Dem. Rep.",Low income
+12,13,Chad,TCD,2023,710.0,TD,Chad,Low income
+13,14,Liberia,LBR,2023,730.0,LR,Liberia,Low income
+14,15,"Yemen, Rep.",YEM,2018,820.0,YE,"Yemen, Rep.",Low income
+15,16,"Gambia, The",GMB,2023,830.0,GM,"Gambia, The",Low income
+16,17,Burkina Faso,BFA,2023,850.0,BF,Burkina Faso,Low income
+17,18,Mali,MLI,2023,860.0,ML,Mali,Low income
+18,19,Guinea-Bissau,GNB,2023,900.0,GW,Guinea-Bissau,Low income
+19,20,Rwanda,RWA,2023,980.0,RW,Rwanda,Low income
+20,21,Uganda,UGA,2023,980.0,UG,Uganda,Low income
+21,22,Sudan,SDN,2023,990.0,SD,Sudan,Low income
+22,23,Togo,TGO,2023,1030.0,TG,Togo,Low income
+23,24,South Sudan,SSD,2015,1040.0,SS,South Sudan,Low income
+24,25,Ethiopia,ETH,2023,1130.0,ET,Ethiopia,Low income
+25,26,Lesotho,LSO,2023,1160.0,LS,Lesotho,Lower middle income
+26,27,Myanmar,MMR,2023,1210.0,MM,Myanmar,Lower middle income
+27,28,Tanzania,TZA,2023,1210.0,TZ,Tanzania,Lower middle income
+28,29,Zambia,ZMB,2023,1320.0,ZM,Zambia,Lower middle income
+29,30,Guinea,GIN,2023,1360.0,GN,Guinea,Lower middle income
+30,31,Nepal,NPL,2023,1370.0,NP,Nepal,Lower middle income
+31,32,Benin,BEN,2023,1440.0,BJ,Benin,Lower middle income
+32,33,Tajikistan,TJK,2023,1440.0,TJ,Tajikistan,Lower middle income
+33,34,Pakistan,PAK,2023,1500.0,PK,Pakistan,Lower middle income
+34,35,Comoros,COM,2023,1600.0,KM,Comoros,Lower middle income
+35,36,Cameroon,CMR,2023,1650.0,CM,Cameroon,Lower middle income
+36,37,Senegal,SEN,2023,1660.0,SN,Senegal,Lower middle income
+37,38,Kyrgyz Republic,KGZ,2023,1700.0,KG,Kyrgyz Republic,Lower middle income
+38,39,Haiti,HTI,2023,1740.0,HT,Haiti,Lower middle income
+39,40,Zimbabwe,ZWE,2023,1740.0,ZW,Zimbabwe,Lower middle income
+40,41,Cambodia,KHM,2023,1810.0,KH,Cambodia,Lower middle income
+41,42,Nigeria,NGA,2023,1930.0,NG,Nigeria,Lower middle income
+42,43,Kenya,KEN,2023,2110.0,KE,Kenya,Lower middle income
+43,44,Lao PDR,LAO,2023,2120.0,LA,Lao PDR,Lower middle income
+44,45,Angola,AGO,2023,2130.0,AO,Angola,Lower middle income
+45,46,Timor-Leste,TLS,2023,2140.0,TL,Timor-Leste,Lower middle income
+46,47,Mauritania,MRT,2023,2150.0,MR,Mauritania,Lower middle income
+47,48,Solomon Islands,SLB,2023,2270.0,SB,Solomon Islands,Lower middle income
+48,49,Nicaragua,NIC,2023,2270.0,NI,Nicaragua,Lower middle income
+49,50,Ghana,GHA,2023,2340.0,GH,Ghana,Lower middle income
+50,51,Uzbekistan,UZB,2023,2360.0,UZ,Uzbekistan,Lower middle income
+51,52,"Congo, Rep.",COG,2023,2470.0,CG,"Congo, Rep.",Lower middle income
+52,53,Sao Tome and Principe,STP,2023,2480.0,ST,Sao Tome and Principe,Lower middle income
+53,54,India,IND,2023,2540.0,IN,India,Lower middle income
+54,55,Cote d'Ivoire,CIV,2023,2670.0,CI,Cote d'Ivoire,Lower middle income
+55,56,Papua New Guinea,PNG,2023,2840.0,PG,Papua New Guinea,Lower middle income
+56,57,Bangladesh,BGD,2023,2860.0,BD,Bangladesh,Lower middle income
+57,58,Honduras,HND,2023,2900.0,HN,Honduras,Lower middle income
+58,59,Djibouti,DJI,2023,3450.0,DJ,Djibouti,Lower middle income
+59,60,Sri Lanka,LKA,2023,3540.0,LK,Sri Lanka,Lower middle income
+60,61,Bhutan,BTN,2022,3590.0,BT,Bhutan,Lower middle income
+61,62,Bolivia,BOL,2023,3600.0,BO,Bolivia,Lower middle income
+62,63,Vanuatu,VUT,2023,3660.0,VU,Vanuatu,Lower middle income
+63,64,Morocco,MAR,2023,3700.0,MA,Morocco,Lower middle income
+64,65,Kiribati,KIR,2023,3730.0,KI,Kiribati,Lower middle income
+65,66,Lebanon,LBN,2023,3740.0,LB,Lebanon,Lower middle income
+66,67,Tunisia,TUN,2023,3770.0,TN,Tunisia,Lower middle income
+67,68,Eswatini,SWZ,2023,3860.0,SZ,Eswatini,Lower middle income
+68,69,"Egypt, Arab Rep.",EGY,2023,3900.0,EG,"Egypt, Arab Rep.",Lower middle income
+69,70,Samoa,WSM,2023,4020.0,WS,Samoa,Lower middle income
+70,71,"Micronesia, Fed. Sts.",FSM,2023,4150.0,FM,"Micronesia, Fed. Sts.",Lower middle income
+71,72,Viet Nam,VNM,2023,4180.0,VN,Viet Nam,Lower middle income
+72,73,West Bank and Gaza,PSE,2023,4220.0,PS,West Bank and Gaza,Lower middle income
+73,74,Philippines,PHL,2023,4230.0,PH,Philippines,Lower middle income
+74,75,Cabo Verde,CPV,2023,4280.0,CV,Cabo Verde,Lower middle income
+75,76,Jordan,JOR,2023,4460.0,JO,Jordan,Lower middle income
+76,77,"Iran, Islamic Rep.",IRN,2023,4680.0,IR,"Iran, Islamic Rep.",Upper middle income
+77,78,Indonesia,IDN,2023,4870.0,ID,Indonesia,Upper middle income
+78,79,Namibia,NAM,2023,4870.0,NA,Namibia,Upper middle income
+79,80,El Salvador,SLV,2023,4920.0,SV,El Salvador,Upper middle income
+80,81,Mongolia,MNG,2023,4950.0,MN,Mongolia,Upper middle income
+81,82,Algeria,DZA,2023,4960.0,DZ,Algeria,Upper middle income
+82,83,Tonga,TON,2022,5000.0,TO,Tonga,Upper middle income
+83,84,Ukraine,UKR,2023,5070.0,UA,Ukraine,Upper middle income
+84,85,Equatorial Guinea,GNQ,2023,5240.0,GQ,Equatorial Guinea,Upper middle income
+85,86,Suriname,SUR,2023,5360.0,SR,Suriname,Upper middle income
+86,87,Guatemala,GTM,2023,5580.0,GT,Guatemala,Upper middle income
+87,88,Fiji,FJI,2023,5580.0,FJ,Fiji,Upper middle income
+88,89,Iraq,IRQ,2023,5600.0,IQ,Iraq,Upper middle income
+89,90,Kosovo,XKX,2023,5980.0,XK,Kosovo,Upper middle income
+90,91,Moldova,MDA,2023,6110.0,MD,Moldova,Upper middle income
+91,92,Jamaica,JAM,2023,6150.0,JM,Jamaica,Upper middle income
+92,93,Paraguay,PRY,2023,6200.0,PY,Paraguay,Upper middle income
+93,94,Ecuador,ECU,2023,6510.0,EC,Ecuador,Upper middle income
+94,95,Azerbaijan,AZE,2023,6680.0,AZ,Azerbaijan,Upper middle income
+95,96,Georgia,GEO,2023,6680.0,GE,Georgia,Upper middle income
+96,97,South Africa,ZAF,2023,6750.0,ZA,South Africa,Upper middle income
+97,98,Colombia,COL,2023,6870.0,CO,Colombia,Upper middle income
+98,99,Peru,PER,2023,6990.0,PE,Peru,Upper middle income
+99,100,Turkmenistan,TKM,2019,7130.0,TM,Turkmenistan,Upper middle income
+100,101,Thailand,THA,2023,7180.0,TH,Thailand,Upper middle income
+101,102,Belize,BLZ,2023,7190.0,BZ,Belize,Upper middle income
+102,103,Armenia,ARM,2023,7330.0,AM,Armenia,Upper middle income
+103,104,Tuvalu,TUV,2023,7550.0,TV,Tuvalu,Upper middle income
+104,105,Albania,ALB,2023,7570.0,AL,Albania,Upper middle income
+105,106,Marshall Islands,MHL,2023,7570.0,MH,Marshall Islands,Upper middle income
+106,107,Libya,LBY,2023,7570.0,LY,Libya,Upper middle income
+107,108,Botswana,BWA,2023,7620.0,BW,Botswana,Upper middle income
+108,109,North Macedonia,MKD,2023,7660.0,MK,North Macedonia,Upper middle income
+109,110,Belarus,BLR,2023,7780.0,BY,Belarus,Upper middle income
+110,111,Gabon,GAB,2023,7960.0,GA,Gabon,Upper middle income
+111,112,Bosnia and Herzegovina,BIH,2023,8160.0,BA,Bosnia and Herzegovina,Upper middle income
+112,113,Dominica,DMA,2023,8920.0,DM,Dominica,Upper middle income
+113,114,Cuba,CUB,2019,8920.0,CU,Cuba,Upper middle income
+114,115,Brazil,BRA,2023,9070.0,BR,Brazil,Upper middle income
+115,116,Dominican Republic,DOM,2023,9700.0,DO,Dominican Republic,Upper middle income
+116,117,Grenada,GRD,2023,9800.0,GD,Grenada,Upper middle income
+117,118,Serbia,SRB,2023,10030.0,RS,Serbia,Upper middle income
+118,119,St. Vincent and the Grenadines,VCT,2023,10070.0,VC,St. Vincent and the Grenadines,Upper middle income
+119,120,Kazakhstan,KAZ,2023,10940.0,KZ,Kazakhstan,Upper middle income
+120,121,Maldives,MDV,2023,11030.0,MV,Maldives,Upper middle income
+121,122,Montenegro,MNE,2023,11500.0,ME,Montenegro,Upper middle income
+122,123,Mauritius,MUS,2023,11530.0,MU,Mauritius,Upper middle income
+123,124,Turkiye,TUR,2023,11650.0,TR,Turkiye,Upper middle income
+124,125,Malaysia,MYS,2023,11970.0,MY,Malaysia,Upper middle income
+125,126,Mexico,MEX,2023,12100.0,MX,Mexico,Upper middle income
+126,127,St. Lucia,LCA,2023,12400.0,LC,St. Lucia,Upper middle income
+127,128,Argentina,ARG,2023,12520.0,AR,Argentina,Upper middle income
+128,129,"Venezuela, RB",VEN,2014,13010.0,VE,"Venezuela, RB",Not classified
+129,130,China,CHN,2023,13400.0,CN,China,Upper middle income
+130,131,Costa Rica,CRI,2023,13850.0,CR,Costa Rica,Upper middle income
+131,132,Palau,PLW,2023,14250.0,PW,Palau,High income
+132,133,Russian Federation,RUS,2023,14250.0,RU,Russian Federation,High income
+133,134,Bulgaria,BGR,2023,14460.0,BG,Bulgaria,High income
+134,135,Chile,CHL,2023,15820.0,CL,Chile,High income
+135,136,Romania,ROU,2023,16670.0,RO,Romania,High income
+136,137,Seychelles,SYC,2023,16940.0,SC,Seychelles,High income
+137,138,Trinidad and Tobago,TTO,2023,17940.0,TT,Trinidad and Tobago,High income
+138,139,Panama,PAN,2023,18010.0,PA,Panama,High income
+139,140,French Polynesia,PYF,2000,18560.0,PF,French Polynesia,High income
+140,141,Uruguay,URY,2023,19530.0,UY,Uruguay,High income
+141,142,Poland,POL,2023,19730.0,PL,Poland,High income
+142,143,Hungary,HUN,2023,19820.0,HU,Hungary,High income
+143,144,Antigua and Barbuda,ATG,2023,19990.0,AG,Antigua and Barbuda,High income
+144,145,Guyana,GUY,2023,20360.0,GY,Guyana,High income
+145,146,Curacao,CUW,2022,20590.0,CW,Curacao,High income
+146,147,Croatia,HRV,2023,20670.0,HR,Croatia,High income
+147,148,Barbados,BRB,2023,21280.0,BB,Barbados,High income
+148,149,St. Kitts and Nevis,KNA,2023,21380.0,KN,St. Kitts and Nevis,High income
+149,150,Oman,OMN,2023,21540.0,OM,Oman,High income
+150,151,Latvia,LVA,2023,21970.0,LV,Latvia,High income
+151,152,Nauru,NRU,2023,22090.0,NR,Nauru,High income
+152,153,Greece,GRC,2023,22580.0,GR,Greece,High income
+153,154,Slovak Republic,SVK,2023,22790.0,SK,Slovak Republic,High income
+154,155,Lithuania,LTU,2023,24820.0,LT,Lithuania,High income
+155,156,Puerto Rico,PRI,2023,25240.0,PR,Puerto Rico,High income
+156,157,Portugal,PRT,2023,26270.0,PT,Portugal,High income
+157,158,Turks and Caicos Islands,TCA,2023,26570.0,TC,Turks and Caicos Islands,High income
+158,159,Czechia,CZE,2023,27110.0,CZ,Czechia,High income
+159,160,Estonia,EST,2023,27240.0,EE,Estonia,High income
+160,161,Bahrain,BHR,2023,28280.0,BH,Bahrain,High income
+161,162,Saudi Arabia,SAU,2023,28690.0,SA,Saudi Arabia,High income
+162,163,Slovenia,SVN,2023,30620.0,SI,Slovenia,High income
+163,164,Cyprus,CYP,2023,30990.0,CY,Cyprus,High income
+164,165,"Bahamas, The",BHS,2023,31990.0,BS,"Bahamas, The",High income
+165,166,Spain,ESP,2023,32180.0,ES,Spain,High income
+166,167,Aruba,ABW,2022,33410.0,AW,Aruba,High income
+167,168,Malta,MLT,2023,34240.0,MT,Malta,High income
+168,169,Greenland,GRL,2007,34800.0,GL,Greenland,High income
+169,170,Brunei Darussalam,BRN,2023,34970.0,BN,Brunei Darussalam,High income
+170,171,"Korea, Rep.",KOR,2023,35490.0,KR,"Korea, Rep.",High income
+171,172,Sint Maarten (Dutch part),SXM,2022,36960.0,SX,Sint Maarten (Dutch part),High income
+172,173,New Caledonia,NCL,2021,37370.0,NC,New Caledonia,High income
+173,174,Italy,ITA,2023,38200.0,IT,Italy,High income
+174,175,Japan,JPN,2023,39030.0,JP,Japan,High income
+175,176,"Macao SAR, China",MAC,2022,43940.0,MO,"Macao SAR, China",High income
+176,177,France,FRA,2023,45070.0,FR,France,High income
+177,178,Kuwait,KWT,2023,46140.0,KW,Kuwait,High income
+178,179,San Marino,SMR,2021,47120.0,SM,San Marino,High income
+179,180,United Kingdom,GBR,2023,47800.0,GB,United Kingdom,High income
+180,181,New Zealand,NZL,2023,48610.0,NZ,New Zealand,High income
+181,182,Andorra,AND,2022,50080.0,AD,Andorra,High income
+182,183,United Arab Emirates,ARE,2023,53290.0,AE,United Arab Emirates,High income
+183,184,Finland,FIN,2023,53390.0,FI,Finland,High income
+184,185,Canada,CAN,2023,53930.0,CA,Canada,High income
+185,186,Germany,DEU,2023,53970.0,DE,Germany,High income
+186,187,Belgium,BEL,2023,54530.0,BE,Belgium,High income
+187,188,Israel,ISR,2023,55020.0,IL,Israel,High income
+188,189,Austria,AUT,2023,55070.0,AT,Austria,High income
+189,190,"Hong Kong SAR, China",HKG,2023,55200.0,HK,"Hong Kong SAR, China",High income
+190,191,Netherlands,NLD,2023,60670.0,NL,Netherlands,High income
+191,192,Sweden,SWE,2023,61650.0,SE,Sweden,High income
+192,193,Australia,AUS,2023,63140.0,AU,Australia,High income
+193,194,Cayman Islands,CYM,2022,68790.0,KY,Cayman Islands,High income
+194,195,Qatar,QAT,2022,70070.0,QA,Qatar,High income
+195,196,Singapore,SGP,2023,70590.0,SG,Singapore,High income
+196,197,Denmark,DNK,2023,73360.0,DK,Denmark,High income
+197,198,Faroe Islands,FRO,2022,74420.0,FO,Faroe Islands,High income
+198,199,Isle of Man,IMN,2021,76300.0,IM,Isle of Man,High income
+199,200,Iceland,ISL,2023,79840.0,IS,Iceland,High income
+200,201,United States,USA,2023,80300.0,US,United States,High income
+201,202,Ireland,IRL,2023,80390.0,IE,Ireland,High income
+202,203,Luxembourg,LUX,2023,88370.0,LU,Luxembourg,High income
+203,204,Switzerland,CHE,2023,95160.0,CH,Switzerland,High income
+204,205,Norway,NOR,2023,102460.0,NO,Norway,High income
+205,206,Liechtenstein,LIE,2009,116600.0,LI,Liechtenstein,High income
+206,207,Bermuda,BMU,2022,134640.0,BM,Bermuda,High income
