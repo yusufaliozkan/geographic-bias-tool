@@ -115,8 +115,9 @@ else:
             # Create a DataFrame with DOIs only
             df_dois = df[[doi_column]]
             df_dois.columns = ['doi']  # Standardize column name to 'DOI'
-            
+        
         else:
+            df_dois
             st.write("No DOI column in the file.")
     else:
         st.write("Please upload a CSV file to calculate CSI.")
