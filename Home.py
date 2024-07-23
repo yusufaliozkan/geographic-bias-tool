@@ -111,12 +111,9 @@ else:
         
         if doi_column:
             # Create a DataFrame with DOIs only
-            doi_df = df[[doi_column]]
-            doi_df.columns = ['DOI']  # Standardize column name to 'DOI'
+            df_dois = df[[doi_column]]
+            df_dois.columns = ['DOI']  # Standardize column name to 'DOI'
             
-            # Display the DOI DataFrame
-            st.write("Here are the DOIs from the uploaded CSV file:")
-            st.write(doi_df)
         else:
             st.write("No DOI column in the file.")
     else:
