@@ -22,10 +22,24 @@ with st.sidebar:
 """
 )
 
-st.text_area('Enter DOIs here', help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696')
-dois = ["10.1136/bmjgh-2023-013696", "10.1097/jac.0b013e31822cbdfd", '10.1080/02684527.2022.2055936', '10.1126/scitranslmed.aad9460']  # Add more DOIs as needed
+dois = st.text_area('Enter DOIs here', help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696')
+if dois:
+    # Split the input text into individual DOIs based on newline character
+    doi_list = dois.split('\n')
+    
+    # Remove any empty strings that may result from extra newlines
+    doi_list = [doi.strip() for doi in doi_list if doi.strip()]
+    
+    # Create a DataFrame
+    df_dois = pd.DataFrame(doi_list, columns=["DOI"])
+    
+    # Display the DataFrame
+    df_dois
+else:
+    st.write("Enter DOIs in the text area to see the DataFrame.")
+# dois = ["10.1136/bmjgh-2023-013696", "10.1097/jac.0b013e31822cbdfd", '10.1080/02684527.2022.2055936', '10.1126/scitranslmed.aad9460']  # Add more DOIs as needed
 
-df_dois = pd.DataFrame(dois, columns=['doi'])
+# df_dois = pd.DataFrame(dois, columns=['doi'])
 
 df_dois
 
