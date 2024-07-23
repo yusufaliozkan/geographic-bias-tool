@@ -29,7 +29,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.image('https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png', width=300)
 st.header('Geographic Bias Tool', anchor=False)
 
 dois = st.text_area(
