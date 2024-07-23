@@ -259,8 +259,12 @@ if dois:
                 with col2:
                     st.metric(label=f'Number of unique authors', value=f'{no_authors}')
                 with col3:
-                    st.metric(label=f'Number of unique countries', value=f'{no_country}')
+                    st.metric(label=f'Number of unique author countries', value=f'{no_country}')
                 
+                with st.popover('Country breakdown')
+                    country_counts = df_authorships['Country Name'].value_counts().reset_index()
+                    country_counts.columns = ['Country Name', 'Count']
+                    country_counts
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
