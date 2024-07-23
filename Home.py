@@ -97,6 +97,18 @@ if dois:
     with st.expander(f'See the DOIs you entered'):
         df_dois
 
+uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+
+if uploaded_file is not None:
+    # Read the uploaded CSV file into a DataFrame
+    df = pd.read_csv(uploaded_file)
+    
+    # Display the DataFrame
+    st.write("Here is the data from the uploaded CSV file:")
+    st.write(df)
+else:
+    st.write("Please upload a CSV file to see the content.")
+
     submit = st.button('Calculate Citation Source Index')
 
     if submit or st.session_state.get('status_expanded', False):
