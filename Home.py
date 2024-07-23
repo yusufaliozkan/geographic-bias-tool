@@ -251,7 +251,6 @@ if dois:
                 no_doi_found = df_final['DOI'].nunique()
                 no_country = df_authorships['Country Code 3'].nunique()
 
-                df_authorships
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
                 col1, col2, col3 = st.columns(3)
                 with col1:
