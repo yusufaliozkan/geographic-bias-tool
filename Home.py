@@ -22,6 +22,7 @@ with st.sidebar:
 """
 )
 
+st.image('https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png')
 st.header('Geographic Bias Tool', anchor=False)
 
 dois = st.text_area(
