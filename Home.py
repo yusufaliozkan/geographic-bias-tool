@@ -34,7 +34,8 @@ if dois:
     df_dois = pd.DataFrame(doi_list, columns=["doi"])
     df_dois = df_dois.drop_duplicates().reset_index(drop=True)
     no_dois = len(df_dois)
-    with st.expander(f'{no_dois} DOIs to be checked'):
+    st.info(f'You entered {no_dois} unique DOIs')
+    with st.expander(f'See the DOIs you entered'):
         df_dois
 
     submit = st.button('Calculate Citation Source Index')
