@@ -213,14 +213,6 @@ if dois:
                         authorship_data.append(author_record)
 
             df_authorships = pd.DataFrame(authorship_data)
-            df_authorships
-
-            df_authorships['Country Code 2'] = df_authorships['Country Code 2'].str.strip()
-            df_authorships['Country Code 2'].replace('', pd.NA, inplace=True)
-            
-            # Remove duplicate rows
-            df_authorships = df_authorships.drop_duplicates()
-            df_authorships
             openalex_found_dois = len(df_authorships)
             if openalex_found_dois == 0:
                 st.error('''
@@ -232,6 +224,11 @@ if dois:
                 ''')
                 status.update(label=f"Calculation complete without any results!", state="complete", expanded=True)
             else:
+                df_authorships['Country Code 2'] = df_authorships['Country Code 2'].str.strip()
+                df_authorships['Country Code 2'].replace('', pd.NA, inplace=True)
+                
+                # Remove duplicate rows
+                df_authorships = df_authorships.drop_duplicates()
                 # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
                 df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
 
