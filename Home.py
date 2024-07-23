@@ -238,11 +238,12 @@ if dois:
                 })
 
                 no_authors = df_authorships['author_name'].nunique()
-                no_authors
                 no_doi_found = df_final['DOI'].nunique()
 
-                st.markdown(f'### Citation Source Index: {round(citation_source_index, 2)}')
+
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
+                st.write(f'Citation Source Index: **{round(citation_source_index, 2)}**')
+                st.write(f'Number of unique authors: **{no_authors}**')
                 
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
