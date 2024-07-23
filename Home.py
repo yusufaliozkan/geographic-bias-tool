@@ -118,6 +118,7 @@ else:
             st.write("No DOI column in the file.")
     else:
         st.write("Please upload a CSV file to see the content.")
+    df_dois
 
 if dois:
 
