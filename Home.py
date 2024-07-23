@@ -41,7 +41,7 @@ st.title('Geographic Bias Tool', anchor=False)
 
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-with st.popover('About this tool'):
+with st.popover('About this tool', use_container_width=True):
     with st.expander('What is Geographic Bias Tool?'):
         st.write('''
         Geographic Bias Tool aims to present data on the diversity of countries and country income level of authors.
