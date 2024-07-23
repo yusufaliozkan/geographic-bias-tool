@@ -387,11 +387,7 @@ if dois:
                 df_final  
 
                 source =   df_authorships['source'].value_counts().reset_index()
-                for column in df_authorships.columns:
-                    value_counts = df_authorships[column].value_counts().reset_index()
-                    value_counts.columns = [column, 'count']
-                    st.write(f"Value counts for column: {column}")
-                    st.write(value_counts)
+                source
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
     st.warning("Enter DOIs in the text area or upload a file to calculate the Citation Source Index.")
