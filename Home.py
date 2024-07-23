@@ -61,7 +61,10 @@ def gbi_tool():
 
         submit = st.button('Calculate Citation Source Index')
 
-        if submit:
+        if submit or st.session_state.get('status_expanded', False):
+
+            if submit:
+                st.session_state['status_expanded'] = True
             with st.status("Finding sources and calculating CSI...", expanded=True) as status:
                 ## OPENALEX DATA RETRIEVAL
                 def fetch_authorship_info_and_count(doi):
@@ -276,8 +279,7 @@ def gbi_tool():
                         income_level_counts.columns = ['Income Level', 'Count']
                         fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
                         st.plotly_chart(fig2, use_container_width = True)
-                    else:
-                        df_final
+
                     df_final    
                     status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
     else:
