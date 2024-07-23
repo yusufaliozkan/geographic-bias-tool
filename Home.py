@@ -99,7 +99,7 @@ else:
     st.write('Please upload and submit a .csv or .xlsx file of DOIs (commencing “10.") in separate rows.')
 
     # File uploader widget accepting both CSV and XLSX files
-    uploaded_file = st.file_uploader("Choose a CSV or XLSX file", type=["csv", "xlsx"])
+    df_dois = st.file_uploader("Choose a CSV or XLSX file", type=["csv", "xlsx"])
 
     if df_dois is not None:
         # Determine the file type and read accordingly
