@@ -33,8 +33,8 @@ if dois:
     # Create a DataFrame
     df_dois = pd.DataFrame(doi_list, columns=["doi"])
 
-    st.markdown('### Your DOIs are:')
-    df_dois
+    with st.expander('DOIs to be checked'):
+        df_dois
 
     submit = st.button('Calculate Citation Source Index')
 
