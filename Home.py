@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 import streamlit.components.v1 as components
 import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 st.set_page_config(layout = "wide", 
                     page_title='Geographic Bias Tool',
