@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
 import plotly.express as px
 from copyright import display_custom_license
+import numpy as np
 
 
 st.set_page_config(layout = "wide", 
