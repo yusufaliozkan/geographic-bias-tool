@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 import streamlit.components.v1 as components
 import xml.etree.ElementTree as ET
 
-st.set_page_config(layout = "centered", 
+st.set_page_config(layout = "wide", 
                     page_title='Geographic Bias Tool',
                     page_icon="",
                     initial_sidebar_state="auto") 
@@ -186,7 +186,6 @@ df_authorships['Countries'] = df_authorships.groupby('doi')['Country Name'].tran
 country_count = df_result['Country Code 3'].nunique()
 
 df_authorships_mean_rank = df_authorships.groupby('doi')['Rank'].mean()
-df_authorships_mean_rank
 csi = round(df_authorships_mean_rank/country_count, 2)
 
 df_authorships = df_authorships.merge(csi.rename('Citation Source Index'), on='doi', how='left')
