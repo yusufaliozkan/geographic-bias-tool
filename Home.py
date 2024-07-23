@@ -358,7 +358,7 @@ if dois:
                 average_rank = df_authorships['Rank'].mean()
                 country_count = df_result['Country Code 3'].nunique()
                 citation_source_index = average_rank / country_count
-                df_final = df_authorships[['Citation Source Index', 'doi', 'title', 'all_authors', 'Countries', 'author_count']].drop_duplicates().reset_index(drop=True)
+                df_final = df_authorships[['Citation Source Index', 'doi', 'title', 'Countries', 'all_authors', 'author_count']].drop_duplicates().reset_index(drop=True)
                 df_final = df_final.rename(columns={
                     'doi': 'DOI',
                     'title': 'Title',
