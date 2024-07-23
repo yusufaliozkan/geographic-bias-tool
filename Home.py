@@ -120,7 +120,7 @@ else:
             st.error('''
             No DOI column in the file.
             
-            Make sure that the column listing DOIs have one of the following alternatives:
+            Make sure that the column listing DOIs have one of the following alternative names:
             'doi', 'DOI', 'dois', 'DOIs', 'Hyperlinked DOI'
             ''')
             st.stop()
