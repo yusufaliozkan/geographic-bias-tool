@@ -187,7 +187,7 @@ country_count = df_result['Country Code 3'].nunique()
 
 df_authorships_mean_rank = df_authorships.groupby('doi')['Rank'].mean()
 df_authorships_mean_rank
-csi = df_authorships_mean_rank/country_count
+csi = round(df_authorships_mean_rank/country_count, 2)
 
 df_authorships = df_authorships.merge(csi.rename('Citation Source Index'), on='doi', how='left')
 average_rank = df_authorships['Rank'].mean()
