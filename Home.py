@@ -117,7 +117,7 @@ else:
             df_dois.columns = ['doi']  # Standardize column name to 'DOI'
         
         else:
-            st.warning('''
+            st.error('''
             No DOI column in the file.
             
             Make sure that the column listing DOIs have one of the following alternatives:
