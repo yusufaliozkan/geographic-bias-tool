@@ -209,10 +209,11 @@ if dois:
             country_count = df_result['Country Code 3'].nunique()
             citation_source_index = average_rank / country_count
             df_final = df_authorships[['Citation Source Index', 'doi', 'title', 'all_authors', 'Countries']].drop_duplicates().reset_index(drop=True)
-            no_doi = df_final['doi'].nunique()
+            no_doi_found = df_final['doi'].nunique()
 
             st.markdown(f'### Citation Source Index: {round(citation_source_index, 2)}')
+            st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
             df_final
-            status.update(label=f"Calculation complete! Results found for {no_doi} DOIs", state="complete", expanded=True)
+            status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
     st.warning("Enter DOIs in the text area to calculate the Citation Source Index.")
