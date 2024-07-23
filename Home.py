@@ -24,7 +24,15 @@ with st.sidebar:
 
 st.header('Geographic Bias Tool')
 
-dois = st.text_area('Enter DOIs here', help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696')
+dois = st.text_area(
+    'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
+    help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
+    placeholder='''
+    10.1136/bmjgh-2023-013696
+
+    10.1097/jac.0b013e31822cbdfd
+    '''
+    )
 if dois:
     # Split the input text into individual DOIs based on newline character
     doi_list = dois.split('\n')
