@@ -16,13 +16,15 @@ pd.set_option('display.max_colwidth', None)
 with st.sidebar:
     st.image('https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png', width=150)
     st.subheader("Geographic Bias Tool",anchor=False)  
-    with st.expander('About'):  
+    with st.expander('Licence'):  
         st.write('Note here')
         components.html(
 """
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This tool is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 """
 )
+    with st.expander('Source code'):
+        st.write('[Geographic Bias Tool GitHub repo](https://github.com/yusufaliozkan/geographic-bias-tool/blob/main/Home.py)')
 st.markdown(
     """
     <a href="https://www.imperial.ac.uk">
