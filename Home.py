@@ -78,6 +78,7 @@ with st.popover('About this tool'):
 
 radio = st.radio('Select an option', ['Insert DOIs', 'Upload a file with DOIs'])
 if radio == 'Insert DOIs':
+    st.write('Please insert DOIs (commencing "10.") in separarate rows.')
     dois = st.text_area(
         'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
         help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
@@ -95,6 +96,7 @@ if radio == 'Insert DOIs':
     # Create a DataFrame
     df_dois = pd.DataFrame(doi_list, columns=["doi"])
 else:
+    st.write('Please upload and submit a .csv file of DOIs (commencing “10.") in separate rows.')
     dois = st.file_uploader("Choose a CSV file", type="csv")
 
     if dois is not None:
