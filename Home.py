@@ -270,7 +270,6 @@ if dois:
 
                     income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
                     income_level_counts.columns = ['Income Level', 'Count']
-                    income_level_counts
                     fig2 = px.bar(income_level_counts, y='Income Level', x='Count', orientation='h', title='Income Level Counts')
                     st.plotly_chart(fig2, use_container_width = True)
 
