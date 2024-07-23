@@ -213,6 +213,7 @@ if dois:
                         authorship_data.append(author_record)
 
             df_authorships = pd.DataFrame(authorship_data)
+            df_authorships
 
             df_authorships['Country Code 2'] = df_authorships['Country Code 2'].str.strip()
             df_authorships['Country Code 2'].replace('', pd.NA, inplace=True)
