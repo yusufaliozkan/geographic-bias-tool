@@ -80,7 +80,7 @@ with st.popover('About this tool'):
 
 with st.popover('Reading list'):
     st.subheader('Reading list about the project')
-    st.write(f'''
+    st.caption(f'''
     Harris, Matthew. *Decolonizing Healthcare Innovation: Low-Cost Solutions from Low-Income Countries*. Routledge, 2024, https://www.routledge.com/Decolonizing-Healthcare-Innovation-Low-Cost-Solutions-from-Low-Income-Countries/Harris/p/book/9781032284958.
 
 
