@@ -249,14 +249,17 @@ if dois:
 
                 no_authors = df_authorships['author_name'].nunique()
                 no_doi_found = df_final['DOI'].nunique()
+                no_country = df_authorships['Country Code 3'].nunique()
 
                 df_authorships
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
-                col1, col2 = st.columns(2)
+                col1, col2, col3 = st.columns(3)
                 with col1:
                     st.metric(label=f'Citation Source Index', value=f'{round(citation_source_index, 2)}')
                 with col2:
                     st.metric(label=f'Number of unique authors', value=f'{no_authors}')
+                with col3:
+                    st.metric(label=f'Number of unique countries', value=f'{no_country}')
                 
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
