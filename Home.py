@@ -393,7 +393,7 @@ if dois:
                             title='Country Counts'
                         )
 
-                        col1.plotly_chart(fig, use_container_width=True)
+                        st.plotly_chart(fig, use_container_width=True)
                 
                 gbi_tool()
                 df_final  
