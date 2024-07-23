@@ -178,7 +178,7 @@ if dois:
                     source = 'article page'
                     if not country_codes:
                         country_codes = ['']
-                        source = 'found through author page'
+                        source = 'author profile page'
                     for country_code in country_codes:
                         author_record = {
                             'doi': doi,
