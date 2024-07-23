@@ -86,7 +86,7 @@ if radio == 'Insert DOIs':
         )
 else:
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
-    st.write("Please upload a CSV file to see the content.") 
+    st.write("Please upload a CSV file.") 
     # if uploaded_file is not None:
     #     # Read the uploaded CSV file into a DataFrame
     #     df = pd.read_csv(uploaded_file)
