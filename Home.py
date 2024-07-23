@@ -267,7 +267,7 @@ if dois:
                 
                 @st.experimental_fragment
                 def gbi_tool():
-                    on = st.checkbox('Display dashboard for country breakdown')
+                    on = st.toggle('Display dashboard for country breakdown')
                     if on:
                         st.write('Dashboard')
                         country_counts = df_authorships['Country Name'].value_counts().reset_index()
