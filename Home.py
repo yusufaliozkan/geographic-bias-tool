@@ -29,7 +29,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.header('Geographic Bias Tool', anchor=False)
+st.title('Geographic Bias Tool', anchor=False)
 
 dois = st.text_area(
     'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
