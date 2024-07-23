@@ -4,6 +4,7 @@ import requests
 import xml.etree.ElementTree as ET
 import streamlit.components.v1 as components
 import xml.etree.ElementTree as ET
+import matplotlib.pyplot as plt
 
 st.set_page_config(layout = "wide", 
                     page_title='Geographic Bias Tool',
@@ -263,7 +264,16 @@ if dois:
                 with st.popover('Country breakdown'):
                     country_counts = df_authorships['Country Name'].value_counts().reset_index()
                     country_counts.columns = ['Country Name', 'Count']
-                    country_counts
+                    plt.figure(figsize=(10, 6))
+                    plt.bar(country_counts['Country Name'], country_counts['Count'], color='skyblue')
+                    plt.xlabel('Country Name')
+                    plt.ylabel('Count')
+                    plt.title('Count of Country Names')
+                    plt.xticks(rotation=45)
+                    plt.tight_layout()
+
+                    plt.savefig("/mnt/data/Country_Name_Counts.png")
+                    st.show()
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
