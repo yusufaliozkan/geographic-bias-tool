@@ -222,6 +222,7 @@ if dois:
                 df_authorships['author_weighting'] = 1 / df_authorships['author_count']
                 df_authorships['author_weighting_score'] = df_authorships['Rank']*df_authorships['author_weighting']
                 df_authorships['all_authors'] = df_authorships.groupby('doi')['author_name'].transform(lambda x: ' | '.join(x))
+                df_authorships
                 df_authorships['Countries'] = df_authorships.groupby('doi').apply(lambda x: ' | '.join(x['Country Name'] + " (" + x['Rank'].astype(str) + ")"))
 
                 # df_authorships['Countries'] = df_authorships.groupby('doi')['Country Name'].transform(lambda x: ' | '.join(x))
