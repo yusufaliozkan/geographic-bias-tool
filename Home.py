@@ -32,8 +32,8 @@ if dois:
     
     # Create a DataFrame
     df_dois = pd.DataFrame(doi_list, columns=["doi"])
-
-    with st.expander('DOIs to be checked'):
+    no_dois = len(df_dois)
+    with st.expander(f'{no_dois} DOIs to be checked'):
         df_dois
 
     submit = st.button('Calculate Citation Source Index')
