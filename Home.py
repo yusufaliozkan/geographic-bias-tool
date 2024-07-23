@@ -242,8 +242,11 @@ if dois:
 
 
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
-                st.metric(label=f'Citation Source Index', value=f'{round(citation_source_index, 2)}'),
-                st.write(f'Number of unique authors: **{no_authors}**')
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.metric(label=f'Citation Source Index', value=f'{round(citation_source_index, 2)}')
+                with col2:
+                    st.metric(label=f'Number of unique authors', value=f'{no_authors}')
                 
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
