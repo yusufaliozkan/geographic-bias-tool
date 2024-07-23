@@ -29,7 +29,6 @@ dois = st.text_area(
     help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
     placeholder='''
     10.1136/bmjgh-2023-013696
-
     10.1097/jac.0b013e31822cbdfd
     '''
     )
