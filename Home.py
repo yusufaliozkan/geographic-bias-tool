@@ -270,8 +270,8 @@ if dois:
 
                     income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
                     country_counts.columns = ['Income Level', 'Count']
-                    fig = px.bar(country_counts, x='Income Level', y='Count', title='Income Level Counts')
-                    st.plotly_chart(fig, use_container_width = True)
+                    fig2 = px.bar(country_counts, x='Income Level', y='Count', title='Income Level Counts')
+                    st.plotly_chart(fig2, use_container_width = True)
 
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
