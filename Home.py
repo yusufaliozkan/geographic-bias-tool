@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 import xml.etree.ElementTree as ET
 import streamlit.components.v1 as components
+import xml.etree.ElementTree as ET
 
 st.set_page_config(layout = "centered", 
                     page_title='Geographic Bias Tool',
