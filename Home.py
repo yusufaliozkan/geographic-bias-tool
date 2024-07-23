@@ -23,10 +23,11 @@ with st.sidebar:
 )
 st.markdown(
     """
-    [![Imperial College London Logo](https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png)](https://www.imperial.ac.uk)
+    <a href="https://www.imperial.ac.uk">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" width="300">
+    </a>
     """,
-    unsafe_allow_html=True,
-    width=300
+    unsafe_allow_html=True
 )
 st.image('https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png', width=300)
 st.header('Geographic Bias Tool', anchor=False)
