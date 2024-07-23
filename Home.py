@@ -22,7 +22,7 @@ with st.sidebar:
 """
 )
 
-st.header('Geographic Bias Tool')
+st.header('Geographic Bias Tool', anchor=False) )
 
 dois = st.text_area(
     'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
