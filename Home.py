@@ -112,7 +112,7 @@ else:
         if doi_column:
             # Create a DataFrame with DOIs only
             df_dois = df[[doi_column]]
-            df_dois.columns = ['DOI']  # Standardize column name to 'DOI'
+            df_dois.columns = ['doi']  # Standardize column name to 'DOI'
             
         else:
             st.write("No DOI column in the file.")
