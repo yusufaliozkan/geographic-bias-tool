@@ -32,9 +32,6 @@ if dois:
     
     # Create a DataFrame
     df_dois = pd.DataFrame(doi_list, columns=["DOI"])
-    
-    # Display the DataFrame
-    df_dois
 
     st.markdown('### Your DOIs are:')
     df_dois
