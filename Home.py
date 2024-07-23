@@ -259,7 +259,12 @@ if dois:
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
                 col1, col2, col3 = st.columns(3)
                 with col1:
-                    st.metric(label=f'Citation Source Index', value=f'{round(citation_source_index, 2)}')
+                    st.metric(
+                        label=f'Citation Source Index', 
+                        value=f'{round(citation_source_index, 2)}',
+                        help='''
+                        Citation Source Index (CSI) is a weighted average of the World Bank rankings for Gross National Income (GNI) per capita of the countries where the authors in that citation are from. 
+                        ''')
                 with col2:
                     st.metric(label=f'Number of unique authors', value=f'{no_authors}')
                 with col3:
