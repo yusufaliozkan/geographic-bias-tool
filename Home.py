@@ -236,6 +236,9 @@ if dois:
                     'Countries': 'Countries',
                     'author_count':'Author count'
                 })
+
+                no_authors = df_authorships['author_name'].nunique()
+                no_authors
                 no_doi_found = df_final['DOI'].nunique()
 
                 st.markdown(f'### Citation Source Index: {round(citation_source_index, 2)}')
