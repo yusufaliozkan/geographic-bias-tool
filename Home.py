@@ -264,6 +264,8 @@ if dois:
                 with st.popover('Country breakdown'):
                     country_counts = df_authorships['Country Name'].value_counts().reset_index()
                     country_counts.columns = ['Country Name', 'Count']
+                    fig = px.bar(country_counts, x='Country Name', y='Count', title='Country Counts')
+                    fig
                     country_counts
 
                 df_final    
