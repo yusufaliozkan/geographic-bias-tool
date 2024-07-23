@@ -261,7 +261,7 @@ if dois:
                 with col3:
                     st.metric(label=f'Number of unique author countries', value=f'{no_country}')
                 
-                with st.popover('Country breakdown')
+                with st.popover('Country breakdown'):
                     country_counts = df_authorships['Country Name'].value_counts().reset_index()
                     country_counts.columns = ['Country Name', 'Count']
                     country_counts
