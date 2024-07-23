@@ -41,7 +41,7 @@ st.title('Geographic Bias Tool', anchor=False)
 
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
-col1, col2 = st.columns([3,1])
+col1, col2 = st.columns([3,2])
 with col1:
     with st.popover('About this tool', use_container_width=True):
         with st.expander('What is Geographic Bias Tool?'):
