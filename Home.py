@@ -388,7 +388,8 @@ if dois:
 
                 source =   df_authorships['source'].value_counts().reset_index()
                 source
-                st.write(source)
+                for count in source['count']:
+                    st.write(count)
 
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
