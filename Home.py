@@ -269,7 +269,7 @@ if dois:
                 def gbi_tool():
                     on = st.toggle('Display dashboard for country breakdown')
                     if on:
-                        col1, col2 = st.columns(2)
+                        col1, col2 = st.columns([3,2])
                         with col1:
                             st.write('Dashboard')
                             country_counts = df_authorships['Country Name'].value_counts().reset_index()
