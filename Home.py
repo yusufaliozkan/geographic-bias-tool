@@ -264,7 +264,7 @@ def gbi_tool():
                     with col3:
                         st.metric(label=f'Number of unique author countries', value=f'{no_country}')
                     
-                    on = st.toggle('Display dashboard for country breakdown')
+                    on = st.checkbox('Display dashboard for country breakdown')
                     if on:
                         country_counts = df_authorships['Country Name'].value_counts().reset_index()
                         country_counts.columns = ['Country Name', 'Count']
