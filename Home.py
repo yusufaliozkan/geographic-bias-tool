@@ -227,9 +227,7 @@ if dois:
 
                 # Update country codes for rows where country_code is missing
                 df_authorships = df_authorships.apply(update_country_code, axis=1)
-                df_authorships = df_authorships.dropna(subset=['Country Code 2'])
-
-                # df_authorships['Country Code 2'] = df_authorships['Country Code 2'].fillna('No country info')
+                df_authorships['Country Code 2'] = df_authorships['Country Code 2'].fillna('No country info')
 
 
                 ## WORLD BANK API
@@ -306,7 +304,18 @@ if dois:
                 df_result = df_result.sort_values(by='GNI', ascending=True).reset_index(drop=True)
                 df_result.index = df_result.index + 1
                 df_result = df_result.rename_axis('Rank').reset_index()
+                new_row = pd.DataFrame([{
+                    'Rank': np.nan,
+                    'Country Name': 'No country info',
+                    'Country Code 3': 'No country info',
+                    'Year': 2023,
+                    'GNI': np.nan,  # Use NaN for missing numerical data
+                    'Country Code 2': 'No country info',
+                    'name': 'No country info',
+                    'incomeLevel': 'No country info'
+                }])
 
+                df_result = pd.concat([df_result, new_row], ignore_index=True)
                 df_authorships = pd.merge(df_authorships, df_result, on='Country Code 2', how='left')
 
 
