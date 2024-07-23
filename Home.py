@@ -12,7 +12,7 @@ st.set_page_config(layout = "wide",
 pd.set_option('display.max_colwidth', None)
 
 with st.sidebar:
-    # st.image(path2, width=150)
+    st.image('https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png', width=150)
     st.subheader("Geographic Bias Tool",anchor=False)  
     with st.expander('About'):  
         st.write('Note here')
