@@ -275,7 +275,8 @@ def gbi_tool():
                         income_level_counts.columns = ['Income Level', 'Count']
                         fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
                         st.plotly_chart(fig2, use_container_width = True)
-
+                    else:
+                        df_final
                     df_final    
                     status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
     else:
