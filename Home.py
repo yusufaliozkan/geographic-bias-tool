@@ -37,6 +37,8 @@ st.markdown(
 )
 st.title('Geographic Bias Tool', anchor=False)
 
+st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
 with st.popover('About this tool'):
     st.subheader('What is Geographic Bias Tool?')
     st.write('''
