@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 from copyright import display_custom_license
 import numpy as np
+import plotly.express as px
 
 
 st.set_page_config(layout = "wide", 
@@ -382,6 +383,17 @@ if dois:
                             income_level_counts.columns = ['Income Level', 'Count']
                             fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
                             col2.plotly_chart(fig2, use_container_width = True)
+                        fig = px.choropleth(
+                            country_counts,
+                            locations='Country Name',
+                            locationmode='country names',
+                            color='Count',
+                            hover_name='Country Name',
+                            color_continuous_scale='Viridis',
+                            title='Country Counts'
+                        )
+
+                        col1.plotly_chart(fig, use_container_width=True)
                 
                 gbi_tool()
                 df_final  
