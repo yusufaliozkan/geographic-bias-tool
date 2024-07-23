@@ -266,8 +266,7 @@ if dois:
                     country_counts = df_authorships['Country Name'].value_counts().reset_index()
                     country_counts.columns = ['Country Name', 'Count']
                     fig = px.bar(country_counts, x='Country Name', y='Count', title='Country Counts')
-                    fig
-                    country_counts
+                    st.plotly_chart(fig, use_container_width = True)
 
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
