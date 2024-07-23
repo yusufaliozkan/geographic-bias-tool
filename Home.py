@@ -180,4 +180,18 @@ df_authorships['author_weighting_score'] = df_authorships['Rank']*df_authorships
 df_authorships['all_authors'] = df_authorships.groupby('doi')['author_name'].transform(lambda x: ' | '.join(x))
 df_authorships['Countries'] = df_authorships.groupby('doi')['Country Name'].transform(lambda x: ' | '.join(x))
 
-df_authorships
+
+## CSI CALCULATION
+country_count = df_result['Country Code 3'].nunique()
+
+df_authorships_mean_rank = df_authorships.groupby('doi')['Rank'].mean()
+df_authorships_mean_rank
+csi = df_authorships_mean_rank/country_count
+st.write(f'Citation Source Index: {csi}')
+
+df_authorships = df_authorships.merge(csi.rename('Citation Source Index'), on='doi', how='left')
+average_rank = df_authorships['Rank'].mean()
+country_count = df_result['Country Code 3'].nunique()
+citation_source_index = average_rank / country_count
+df_final = df_authorships[['doi', 'title', 'all_authors', 'Countries', 'Citation Source Index']].drop_duplicates()
+df_final
