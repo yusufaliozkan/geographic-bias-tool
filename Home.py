@@ -40,6 +40,13 @@ with st.popover('About this tool'):
     You can submit DOIs of publications to see the authors' country affiliations and country income statuses.
     '''
     )
+
+    st.subheader('Who developed?')
+    st.write('''
+    Geographic Bias Tool has been developed by [Imperial College London](https://www.imperial.ac.uk/admin-services/library/learning-support/geo-bias/).
+    '''
+    )
+
     st.subheader('What is Citation Source Index (CSI)?')
     st.write('''
     Citation Source Index (CSI) is a weighted average of the World Bank rankings for Gross National Income (GNI) per capita of the countries where the authors in that citation are from. 
