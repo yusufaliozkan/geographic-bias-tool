@@ -31,7 +31,7 @@ if dois:
     doi_list = [doi.strip() for doi in doi_list if doi.strip()]
     
     # Create a DataFrame
-    df_dois = pd.DataFrame(doi_list, columns=["DOI"])
+    df_dois = pd.DataFrame(doi_list, columns=["doi"])
 
     st.markdown('### Your DOIs are:')
     df_dois
