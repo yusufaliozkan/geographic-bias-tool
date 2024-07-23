@@ -104,7 +104,11 @@ if dois:
             df_authorships = df_authorships.drop_duplicates()
             openalex_found_dois = len(df_authorships)
             if openalex_found_dois == 0:
-                st.warning('No DOIs found in the OpenAlex database!')
+                st.warning('''
+                No DOIs found! 
+                Check your DOIs and submit them again. 
+                This might also mean that the DOIs may not be available in the [OpenAlex](https://openalex.org/) database.
+                ''')
                 status.update(label=f"Calculation complete without any results!", state="complete", expanded=True)
             else:
                 # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
