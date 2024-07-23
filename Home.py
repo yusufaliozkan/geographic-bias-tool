@@ -264,6 +264,7 @@ if dois:
                 with st.popover('Country breakdown'):
                     country_counts = df_authorships['Country Name'].value_counts().reset_index()
                     country_counts.columns = ['Country Name', 'Count']
+                    country_counts
 
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
