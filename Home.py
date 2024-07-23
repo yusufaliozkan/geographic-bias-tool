@@ -32,6 +32,7 @@ if dois:
     
     # Create a DataFrame
     df_dois = pd.DataFrame(doi_list, columns=["doi"])
+    df_dois = df_dois.drop_duplicates().reset_index(drop=True)
     no_dois = len(df_dois)
     with st.expander(f'{no_dois} DOIs to be checked'):
         df_dois
