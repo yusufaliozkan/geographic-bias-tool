@@ -84,6 +84,14 @@ if radio == 'Insert DOIs':
         10.1097/jac.0b013e31822cbdfd
         '''
         )
+    # Split the input text into individual DOIs based on newline character
+    doi_list = dois.split('\n')
+    
+    # Remove any empty strings that may result from extra newlines
+    doi_list = [doi.strip() for doi in doi_list if doi.strip()]
+    
+    # Create a DataFrame
+    df_dois = pd.DataFrame(doi_list, columns=["doi"])
 else:
     dois = st.file_uploader("Choose a CSV file", type="csv")
 
@@ -92,7 +100,7 @@ else:
         df = pd.read_csv(dois)
         
         # List of possible DOI column names
-        doi_columns = ['doi', 'DOI', 'dois', 'DOIs']
+        doi_columns = ['doi', 'DOI', 'dois', 'DOIs', 'Hyperlinked DOI']
         
         # Find the first matching DOI column
         doi_column = None
@@ -115,14 +123,7 @@ else:
         st.write("Please upload a CSV file to see the content.")
 
 if dois:
-    # Split the input text into individual DOIs based on newline character
-    doi_list = dois.split('\n')
-    
-    # Remove any empty strings that may result from extra newlines
-    doi_list = [doi.strip() for doi in doi_list if doi.strip()]
-    
-    # Create a DataFrame
-    df_dois = pd.DataFrame(doi_list, columns=["doi"])
+
     df_dois['doi'] = df_dois['doi'].str.replace('https://doi.org/', '')
     df_dois = df_dois.drop_duplicates().reset_index(drop=True)
     no_dois = len(df_dois)
@@ -364,6 +365,6 @@ if dois:
                 df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
-    st.warning("Enter DOIs in the text area to calculate the Citation Source Index.")
+    st.warning("Enter DOIs in the text area or upload a file to calculate the Citation Source Index.")
 
 display_custom_license()
