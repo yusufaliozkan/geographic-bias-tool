@@ -219,6 +219,7 @@ if dois:
             
             # Remove duplicate rows
             df_authorships = df_authorships.drop_duplicates()
+            df_authorships
             openalex_found_dois = len(df_authorships)
             if openalex_found_dois == 0:
                 st.error('''
