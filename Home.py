@@ -49,11 +49,12 @@ with st.popover('About this tool'):
     '''
     )
 
-    st.subheader('Who developed?')
-    st.write('''
-    Geographic Bias Tool has been developed by [Imperial College London](https://www.imperial.ac.uk/admin-services/library/learning-support/geo-bias/).
-    '''
-    )
+    with st.expander('Who developed?')
+        st.subheader('Who developed?')
+        st.write('''
+        Geographic Bias Tool has been developed by [Imperial College London](https://www.imperial.ac.uk/admin-services/library/learning-support/geo-bias/).
+        '''
+        )
 
     st.subheader('What is Citation Source Index (CSI)?')
     st.write('''
