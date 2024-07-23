@@ -43,13 +43,13 @@ st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', uns
 
 col1, col2 = st.columns([3,2])
 with col1:
-    with st.popover('About this tool', use_container_width=True):
-        with st.expander('What is Geographic Bias Tool?'):
-            st.write('''
-            Geographic Bias Tool aims to present data on the diversity of countries and country income level of authors.
-            You can submit DOIs of publications to see the authors' country affiliations and country income statuses.
-            '''
-            )
+    with st.popover('About this tool', use_container_width=False):
+    
+        st.write('''
+        Geographic Bias Tool aims to present data on the diversity of countries and country income level of authors.
+        You can submit DOIs of publications to see the authors' country affiliations and country income statuses.
+        '''
+        )
 
         with st.expander('Who developed?'):
             st.write('''
