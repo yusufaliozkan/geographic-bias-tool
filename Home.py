@@ -60,6 +60,15 @@ with st.popover('About this tool'):
     '''
     )
 
+    st.subheader('Where the data comes from?')
+    st.write('''
+    Publications data (title, author name(s), country affiliations) are retrieved through [OpenAlex API](https://docs.openalex.org/how-to-use-the-api/api-overview).
+
+    Countries are ranked by using [World Bank GNI per capita, Atlas method](https://data.worldbank.org/indicator/NY.GNP.PCAP.CD).
+
+    Country income statuses are retrieved from [World Bank API](https://api.worldbank.org/v2/country/?per_page=1000).
+    '''
+    )
 dois = st.text_area(
     'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
     help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
