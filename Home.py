@@ -208,7 +208,7 @@ if dois:
             citation_source_index = average_rank / country_count
             st.write(f'Citation Source Index: {round(citation_source_index, 2)}')
             df_final = df_authorships[['Citation Source Index', 'doi', 'title', 'all_authors', 'Countries']].drop_duplicates().reset_index(drop=True)
-            no_doi = df_final.nunique()
+            no_doi = df_final['doi'].nunique()
             df_final
             status.update(label=f"Calculation complete! Results found for {no_doi} DOIs", state="complete", expanded=True)
 else:
