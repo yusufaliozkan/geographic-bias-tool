@@ -214,4 +214,4 @@ if dois:
             df_final
             status.update(label=f"Calculation complete! Results found for {no_doi} DOIs", state="complete", expanded=True)
 else:
-    st.write("Enter DOIs in the text area to see the DataFrame.")
+    st.warning("Enter DOIs in the text area to see the DataFrame.")
