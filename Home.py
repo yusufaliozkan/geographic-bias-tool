@@ -6,6 +6,8 @@ import streamlit.components.v1 as components
 import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
 import plotly.express as px
+from copyright import display_custom_license
+
 
 st.set_page_config(layout = "wide", 
                     page_title='Geographic Bias Tool',
@@ -331,3 +333,4 @@ if dois:
 else:
     st.warning("Enter DOIs in the text area to calculate the Citation Source Index.")
 
+display_custom_license()
