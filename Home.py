@@ -387,6 +387,7 @@ if dois:
                 df_final  
 
                 source =   df_authorships['source'].value_counts().reset_index()
+                source
                 for index, row in df_authorships.iterrows():
                     st.write(f"{row['count']} country affiliation found on {row['source']}.")
 
