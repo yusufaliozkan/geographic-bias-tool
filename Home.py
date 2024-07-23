@@ -86,16 +86,33 @@ if radio == 'Insert DOIs':
         )
 else:
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
-    st.write("Please upload a CSV file.") 
-    # if uploaded_file is not None:
-    #     # Read the uploaded CSV file into a DataFrame
-    #     df = pd.read_csv(uploaded_file)
+
+    if uploaded_file is not None:
+        # Read the uploaded CSV file into a DataFrame
+        df = pd.read_csv(uploaded_file)
         
-    #     # Display the DataFrame
-    #     st.write("Here is the data from the uploaded CSV file:")
-    #     st.write(df)
-    # else:
-    #     st.write("Please upload a CSV file to see the content.") 
+        # List of possible DOI column names
+        doi_columns = ['doi', 'DOI', 'dois', 'DOIs']
+        
+        # Find the first matching DOI column
+        doi_column = None
+        for col in doi_columns:
+            if col in df.columns:
+                doi_column = col
+                break
+        
+        if doi_column:
+            # Create a DataFrame with DOIs only
+            doi_df = df[[doi_column]]
+            doi_df.columns = ['DOI']  # Standardize column name to 'DOI'
+            
+            # Display the DOI DataFrame
+            st.write("Here are the DOIs from the uploaded CSV file:")
+            st.write(doi_df)
+        else:
+            st.write("No DOI column in the file.")
+    else:
+        st.write("Please upload a CSV file to see the content.")
 
 if dois:
     # Split the input text into individual DOIs based on newline character
