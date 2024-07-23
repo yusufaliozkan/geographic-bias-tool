@@ -13,7 +13,7 @@ pd.set_option('display.max_colwidth', None)
 
 with st.sidebar:
     # st.image(path2, width=150)
-    st.subheader("Geographic Bias Tool",anchor=None)  
+    st.subheader("Geographic Bias Tool",anchor=False)  
     with st.expander('About'):  
         st.write('Note here')
         components.html(
