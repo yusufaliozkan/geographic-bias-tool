@@ -106,8 +106,10 @@ if dois:
             if openalex_found_dois == 0:
                 st.warning('''
                 No DOIs found! 
+
                 Check your DOIs and submit them again. 
-                This might also mean that the DOIs may not be available in the [OpenAlex](https://openalex.org/) database.
+
+                If you are sure that the DOIs are correct, they may not be available in the [OpenAlex](https://openalex.org/) database.
                 ''')
                 status.update(label=f"Calculation complete without any results!", state="complete", expanded=True)
             else:
