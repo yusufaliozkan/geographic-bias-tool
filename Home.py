@@ -27,6 +27,31 @@ df_dois = pd.DataFrame(dois, columns=['doi'])
 
 df_dois
 
+## OPENALEX DATA RETRIEVAL
+def fetch_authorship_info_and_count(doi):
+    url = f"https://api.openalex.org/works/doi:{doi}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        title = data.get('title', '')
+        authorship_info = data.get('authorships', [])
+        author_count = len(authorship_info)
+        return title, authorship_info, author_count
+    else:
+        return '', [], 0
+
+# Function to fetch author details using author ID
+def fetch_author_details(author_id):
+    response = requests.get(author_id)
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    else:
+        return None
+
+# Fetch authorship information for each DOI and store it in a new DataFrame
+authorship_data = []
+
 for doi in df_dois['doi']:
     title, authorship_info, author_count = fetch_authorship_info_and_count(doi)
     for author in authorship_info:
@@ -53,6 +78,24 @@ df_authorships = pd.DataFrame(authorship_data)
 # Remove duplicate rows
 df_authorships = df_authorships.drop_duplicates()
 
+# Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
+df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
+
+# Function to update country_code if missing and mark the source
+def update_country_code(row):
+    if not row['Country Code 2'] and row['author_id']:
+        author_details = fetch_author_details(row['author_id'])
+        if author_details:
+            affiliations = author_details.get('affiliations', [])
+            if affiliations:
+                country_code = affiliations[0].get('institution', {}).get('country_code', '')
+                if country_code:
+                    row['Country Code 2'] = country_code
+                    row['source'] = 'author profile page'
+    return row
+
+# Update country codes for rows where country_code is missing
+df_authorships = df_authorships.apply(update_country_code, axis=1)
 
 ## WORLD BANK API
 # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
