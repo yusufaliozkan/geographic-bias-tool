@@ -117,7 +117,12 @@ else:
             df_dois.columns = ['doi']  # Standardize column name to 'DOI'
         
         else:
-            st.write("No DOI column in the file.")
+            st.warning('''
+            No DOI column in the file.
+            
+            Make sure that the column listing DOIs have one of the following alternatives:
+            'doi', 'DOI', 'dois', 'DOIs', 'Hyperlinked DOI'
+            ''')
             st.stop()
     else:
         st.write("Please upload a CSV file to calculate CSI.")
