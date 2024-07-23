@@ -105,6 +105,7 @@ if dois:
             openalex_found_dois = len(df_authorships)
             if openalex_found_dois == 0:
                 st.warning('No DOIs found in the OpenAlex database!')
+                status.update(label=f"Calculation complete without any results!", state="complete", expanded=True)
             else:
                 # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
                 df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
@@ -227,6 +228,6 @@ if dois:
                 st.markdown(f'### Citation Source Index: {round(citation_source_index, 2)}')
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
                 df_final
-            status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
+                status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
     st.warning("Enter DOIs in the text area to calculate the Citation Source Index.")
