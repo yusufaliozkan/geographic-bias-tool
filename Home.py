@@ -369,7 +369,10 @@ if dois:
                             col2.plotly_chart(fig2, use_container_width = True)
                 
                 gbi_tool()
-                df_final    
+                df_final  
+
+                source =   df_authorships['source'].value_counts().reset_index()
+                source
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
     st.warning("Enter DOIs in the text area or upload a file to calculate the Citation Source Index.")
