@@ -224,7 +224,7 @@ if dois:
                 df_authorships['all_authors'] = df_authorships.groupby('doi')['author_name'].transform(lambda x: ' | '.join(x))
                 df_authorships
                 df_authorships = df_authorships.groupby('doi').apply(lambda x: ' | '.join(x['Country Name'] + " (" + x['Rank'].astype(str) + ")")).reset_index()
-                countries_combined.columns = ['doi', 'Countries']
+                df_authorships.columns = ['doi', 'Countries']
                 df_authorships
                 # df_authorships['Countries'] = df_authorships.groupby('doi')['Country Name'].transform(lambda x: ' | '.join(x))
 
