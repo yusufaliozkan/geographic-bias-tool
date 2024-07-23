@@ -99,6 +99,8 @@ def update_country_code(row):
 # Update country codes for rows where country_code is missing
 df_authorships = df_authorships.apply(update_country_code, axis=1)
 
+
+
 ## WORLD BANK API
 # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
 df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
@@ -119,29 +121,29 @@ def update_country_code(row):
 # Update country codes for rows where country_code is missing
 df_authorships = df_authorships.apply(update_country_code, axis=1)
 
-world_bank_api_url = "https://api.worldbank.org/v2/country/?per_page=1000"
-response = requests.get(world_bank_api_url)
-root = ET.fromstring(response.content)
+# world_bank_api_url = "https://api.worldbank.org/v2/country/?per_page=1000"
+# response = requests.get(world_bank_api_url)
+# root = ET.fromstring(response.content)
 
-# Extract relevant data and store it in a list
-country_data = []
-for country in root.findall(".//{http://www.worldbank.org}country"):
-    country_id = country.get('id')
-    iso2Code = country.find("{http://www.worldbank.org}iso2Code").text
-    name = country.find("{http://www.worldbank.org}name").text
-    income_level = country.find("{http://www.worldbank.org}incomeLevel").text
+# # Extract relevant data and store it in a list
+# country_data = []
+# for country in root.findall(".//{http://www.worldbank.org}country"):
+#     country_id = country.get('id')
+#     iso2Code = country.find("{http://www.worldbank.org}iso2Code").text
+#     name = country.find("{http://www.worldbank.org}name").text
+#     income_level = country.find("{http://www.worldbank.org}incomeLevel").text
     
-    country_record = {
-        'Country Code 3': country_id,
-        'Country Code 2': iso2Code,
-        'name': name,
-        'incomeLevel': income_level
-    }
-    country_data.append(country_record)
+#     country_record = {
+#         'Country Code 3': country_id,
+#         'Country Code 2': iso2Code,
+#         'name': name,
+#         'incomeLevel': income_level
+#     }
+#     country_data.append(country_record)
 
-# Create a DataFrame from the list
-df_countries = pd.DataFrame(country_data)
-# df_countries = df_countries[df_countries['incomeLevel']!='Aggregates'].reset_index(drop=True)
+# # Create a DataFrame from the list
+# df_countries = pd.DataFrame(country_data)
+df_countries = pd.read_csv('world_bank_api_results.csv')
 
 ## GNI CALCULATIONS
 df = pd.read_csv(
