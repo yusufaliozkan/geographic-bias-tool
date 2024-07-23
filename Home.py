@@ -102,128 +102,131 @@ if dois:
 
             # Remove duplicate rows
             df_authorships = df_authorships.drop_duplicates()
-            df_authorships
-            # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
-            df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
+            openalex_found_dois = len(df_authorships)
+            if openalex_found_dois == 0:
+                st.warning('No DOIs found in the OpenAlex database!')
+            else:
+                # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
+                df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
 
-            # Function to update country_code if missing and mark the source
-            def update_country_code(row):
-                if not row['Country Code 2'] and row['author_id']:
-                    author_details = fetch_author_details(row['author_id'])
-                    if author_details:
-                        affiliations = author_details.get('affiliations', [])
-                        if affiliations:
-                            country_code = affiliations[0].get('institution', {}).get('country_code', '')
-                            if country_code:
-                                row['Country Code 2'] = country_code
-                                row['source'] = 'author profile page'
-                return row
+                # Function to update country_code if missing and mark the source
+                def update_country_code(row):
+                    if not row['Country Code 2'] and row['author_id']:
+                        author_details = fetch_author_details(row['author_id'])
+                        if author_details:
+                            affiliations = author_details.get('affiliations', [])
+                            if affiliations:
+                                country_code = affiliations[0].get('institution', {}).get('country_code', '')
+                                if country_code:
+                                    row['Country Code 2'] = country_code
+                                    row['source'] = 'author profile page'
+                    return row
 
-            # Update country codes for rows where country_code is missing
-            df_authorships = df_authorships.apply(update_country_code, axis=1)
-
-
-
-            ## WORLD BANK API
-            # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
-            df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
-
-            # Function to update country_code if missing and mark the source
-            def update_country_code(row):
-                if not row['Country Code 2'] and row['author_id']:
-                    author_details = fetch_author_details(row['author_id'])
-                    if author_details:
-                        affiliations = author_details.get('affiliations', [])
-                        if affiliations:
-                            country_code = affiliations[0].get('institution', {}).get('country_code', '')
-                            if country_code:
-                                row['Country Code 2'] = country_code
-                                row['source'] = 'author profile page'
-                return row
-
-            # Update country codes for rows where country_code is missing
-            df_authorships = df_authorships.apply(update_country_code, axis=1)
-
-            # world_bank_api_url = "https://api.worldbank.org/v2/country/?per_page=1000"
-            # response = requests.get(world_bank_api_url)
-            # root = ET.fromstring(response.content)
-
-            # # Extract relevant data and store it in a list
-            # country_data = []
-            # for country in root.findall(".//{http://www.worldbank.org}country"):
-            #     country_id = country.get('id')
-            #     iso2Code = country.find("{http://www.worldbank.org}iso2Code").text
-            #     name = country.find("{http://www.worldbank.org}name").text
-            #     income_level = country.find("{http://www.worldbank.org}incomeLevel").text
-                
-            #     country_record = {
-            #         'Country Code 3': country_id,
-            #         'Country Code 2': iso2Code,
-            #         'name': name,
-            #         'incomeLevel': income_level
-            #     }
-            #     country_data.append(country_record)
-
-            # # Create a DataFrame from the list
-            # df_countries = pd.DataFrame(country_data)
-            df_countries = pd.read_csv('world_bank_api_results.csv')
-
-            ## GNI CALCULATIONS
-            df = pd.read_csv(
-                'API_NY.GNP.PCAP.CD_DS2_en_csv_v2_1519779.csv',
-                skiprows=4,  # Example: skipping the first 4 rows if they are not needed
-                delimiter=',',  # Adjust delimiter if it's not a comma
-            )
-            df = df.drop(columns=['Indicator Name', 'Indicator Code'])
-
-            # Melt the DataFrame to make it long-form
-            df_melted = df.melt(id_vars=['Country Name', 'Country Code'], var_name='Year', value_name='GNI')
-            df_melted = df_melted.rename(columns={'Country Code':'Country Code 3'})
-            # Drop rows with missing GNI values
-            df_melted = df_melted.dropna(subset=['GNI'])
-
-            # Convert 'Year' to integer
-            df_melted['Year'] = df_melted['Year'].astype(int)
-
-            # Sort by 'Country Name' and 'Year' to get the latest GNI for each country
-            df_sorted = df_melted.sort_values(by=['Country Name', 'Year'], ascending=[True, False])
-
-            # Drop duplicates to keep the most recent GNI for each country
-            df_most_recent = df_sorted.drop_duplicates(subset=['Country Name'])
-
-            # Select the desired columns
-            df_result = df_most_recent[['Country Name', 'Country Code 3', 'Year', 'GNI']].reset_index(drop=True)
-            df_result = pd.merge(df_result, df_countries, on='Country Code 3', how='left')
-            df_result = df_result[df_result['incomeLevel']!='Aggregates'].reset_index(drop=True)
-            df_result = df_result.sort_values(by='GNI', ascending=True).reset_index(drop=True)
-            df_result.index = df_result.index + 1
-            df_result = df_result.rename_axis('Rank').reset_index()
-
-            df_authorships = pd.merge(df_authorships, df_result, on='Country Code 2', how='left')
+                # Update country codes for rows where country_code is missing
+                df_authorships = df_authorships.apply(update_country_code, axis=1)
 
 
-            df_authorships['author_weighting'] = 1 / df_authorships['author_count']
-            df_authorships['author_weighting_score'] = df_authorships['Rank']*df_authorships['author_weighting']
-            df_authorships['all_authors'] = df_authorships.groupby('doi')['author_name'].transform(lambda x: ' | '.join(x))
-            df_authorships['Countries'] = df_authorships.groupby('doi')['Country Name'].transform(lambda x: ' | '.join(x))
+
+                ## WORLD BANK API
+                # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
+                df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
+
+                # Function to update country_code if missing and mark the source
+                def update_country_code(row):
+                    if not row['Country Code 2'] and row['author_id']:
+                        author_details = fetch_author_details(row['author_id'])
+                        if author_details:
+                            affiliations = author_details.get('affiliations', [])
+                            if affiliations:
+                                country_code = affiliations[0].get('institution', {}).get('country_code', '')
+                                if country_code:
+                                    row['Country Code 2'] = country_code
+                                    row['source'] = 'author profile page'
+                    return row
+
+                # Update country codes for rows where country_code is missing
+                df_authorships = df_authorships.apply(update_country_code, axis=1)
+
+                # world_bank_api_url = "https://api.worldbank.org/v2/country/?per_page=1000"
+                # response = requests.get(world_bank_api_url)
+                # root = ET.fromstring(response.content)
+
+                # # Extract relevant data and store it in a list
+                # country_data = []
+                # for country in root.findall(".//{http://www.worldbank.org}country"):
+                #     country_id = country.get('id')
+                #     iso2Code = country.find("{http://www.worldbank.org}iso2Code").text
+                #     name = country.find("{http://www.worldbank.org}name").text
+                #     income_level = country.find("{http://www.worldbank.org}incomeLevel").text
+                    
+                #     country_record = {
+                #         'Country Code 3': country_id,
+                #         'Country Code 2': iso2Code,
+                #         'name': name,
+                #         'incomeLevel': income_level
+                #     }
+                #     country_data.append(country_record)
+
+                # # Create a DataFrame from the list
+                # df_countries = pd.DataFrame(country_data)
+                df_countries = pd.read_csv('world_bank_api_results.csv')
+
+                ## GNI CALCULATIONS
+                df = pd.read_csv(
+                    'API_NY.GNP.PCAP.CD_DS2_en_csv_v2_1519779.csv',
+                    skiprows=4,  # Example: skipping the first 4 rows if they are not needed
+                    delimiter=',',  # Adjust delimiter if it's not a comma
+                )
+                df = df.drop(columns=['Indicator Name', 'Indicator Code'])
+
+                # Melt the DataFrame to make it long-form
+                df_melted = df.melt(id_vars=['Country Name', 'Country Code'], var_name='Year', value_name='GNI')
+                df_melted = df_melted.rename(columns={'Country Code':'Country Code 3'})
+                # Drop rows with missing GNI values
+                df_melted = df_melted.dropna(subset=['GNI'])
+
+                # Convert 'Year' to integer
+                df_melted['Year'] = df_melted['Year'].astype(int)
+
+                # Sort by 'Country Name' and 'Year' to get the latest GNI for each country
+                df_sorted = df_melted.sort_values(by=['Country Name', 'Year'], ascending=[True, False])
+
+                # Drop duplicates to keep the most recent GNI for each country
+                df_most_recent = df_sorted.drop_duplicates(subset=['Country Name'])
+
+                # Select the desired columns
+                df_result = df_most_recent[['Country Name', 'Country Code 3', 'Year', 'GNI']].reset_index(drop=True)
+                df_result = pd.merge(df_result, df_countries, on='Country Code 3', how='left')
+                df_result = df_result[df_result['incomeLevel']!='Aggregates'].reset_index(drop=True)
+                df_result = df_result.sort_values(by='GNI', ascending=True).reset_index(drop=True)
+                df_result.index = df_result.index + 1
+                df_result = df_result.rename_axis('Rank').reset_index()
+
+                df_authorships = pd.merge(df_authorships, df_result, on='Country Code 2', how='left')
 
 
-            ## CSI CALCULATION
-            country_count = df_result['Country Code 3'].nunique()
+                df_authorships['author_weighting'] = 1 / df_authorships['author_count']
+                df_authorships['author_weighting_score'] = df_authorships['Rank']*df_authorships['author_weighting']
+                df_authorships['all_authors'] = df_authorships.groupby('doi')['author_name'].transform(lambda x: ' | '.join(x))
+                df_authorships['Countries'] = df_authorships.groupby('doi')['Country Name'].transform(lambda x: ' | '.join(x))
 
-            df_authorships_mean_rank = df_authorships.groupby('doi')['Rank'].mean()
-            csi = round(df_authorships_mean_rank/country_count, 2)
 
-            df_authorships = df_authorships.merge(csi.rename('Citation Source Index'), on='doi', how='left')
-            average_rank = df_authorships['Rank'].mean()
-            country_count = df_result['Country Code 3'].nunique()
-            citation_source_index = average_rank / country_count
-            df_final = df_authorships[['Citation Source Index', 'doi', 'title', 'all_authors', 'Countries']].drop_duplicates().reset_index(drop=True)
-            no_doi_found = df_final['doi'].nunique()
+                ## CSI CALCULATION
+                country_count = df_result['Country Code 3'].nunique()
 
-            st.markdown(f'### Citation Source Index: {round(citation_source_index, 2)}')
-            st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
-            df_final
+                df_authorships_mean_rank = df_authorships.groupby('doi')['Rank'].mean()
+                csi = round(df_authorships_mean_rank/country_count, 2)
+
+                df_authorships = df_authorships.merge(csi.rename('Citation Source Index'), on='doi', how='left')
+                average_rank = df_authorships['Rank'].mean()
+                country_count = df_result['Country Code 3'].nunique()
+                citation_source_index = average_rank / country_count
+                df_final = df_authorships[['Citation Source Index', 'doi', 'title', 'all_authors', 'Countries']].drop_duplicates().reset_index(drop=True)
+                no_doi_found = df_final['doi'].nunique()
+
+                st.markdown(f'### Citation Source Index: {round(citation_source_index, 2)}')
+                st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
+                df_final
             status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
     st.warning("Enter DOIs in the text area to calculate the Citation Source Index.")
