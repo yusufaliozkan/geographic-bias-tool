@@ -388,7 +388,7 @@ if dois:
 
                 source =   df_authorships['source'].value_counts().reset_index()
                 source
-                for index, row in df_authorships.iterrows():
+                for index, row in source.iterrows():
                     st.write(f"{row['count']} country affiliation found on {row['source']}.")
 
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
