@@ -119,9 +119,9 @@ else:
         else:
             df_dois
             st.write("No DOI column in the file.")
+            st.stop()
     else:
         st.write("Please upload a CSV file to calculate CSI.")
-    df_dois
 
 if dois:
 
