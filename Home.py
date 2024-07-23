@@ -96,12 +96,17 @@ if radio == 'Insert DOIs':
     # Create a DataFrame
     df_dois = pd.DataFrame(doi_list, columns=["doi"])
 else:
-    st.write('Please upload and submit a .csv file of DOIs (commencing “10.") in separate rows.')
-    dois = st.file_uploader("Choose a CSV file", type="csv")
+    st.write('Please upload and submit a .csv or .xlsx file of DOIs (commencing “10.") in separate rows.')
 
-    if dois is not None:
-        # Read the uploaded CSV file into a DataFrame
-        df = pd.read_csv(dois)
+    # File uploader widget accepting both CSV and XLSX files
+    uploaded_file = st.file_uploader("Choose a CSV or XLSX file", type=["csv", "xlsx"])
+
+    if df_dois is not None:
+        # Determine the file type and read accordingly
+        if df_dois.name.endswith('.csv'):
+            df = pd.read_csv(df_dois)
+        elif df_dois.name.endswith('.xlsx'):
+            df = pd.read_excel(df_dois)
         
         # List of possible DOI column names
         doi_columns = ['doi', 'DOI', 'dois', 'DOIs', 'Hyperlinked DOI']
@@ -117,7 +122,10 @@ else:
             # Create a DataFrame with DOIs only
             df_dois = df[[doi_column]]
             df_dois.columns = ['doi']  # Standardize column name to 'DOI'
-        
+            
+            # Display the DOI DataFrame
+            st.write("Here are the DOIs from the uploaded file:")
+            st.write(df_dois)
         else:
             st.error('''
             No DOI column in the file.
@@ -127,7 +135,7 @@ else:
             ''')
             st.stop()
     else:
-        st.write("Please upload a CSV file to calculate CSI.")
+        st.write("Please upload a CSV or XLSX file to proceed.")
 
 if dois:
 
