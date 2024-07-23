@@ -193,6 +193,9 @@ if dois:
 
             df_authorships = pd.DataFrame(authorship_data)
 
+            df_authorships['Country Code 2'] = df_authorships['Country Code 2'].str.strip()
+            df_authorships['Country Code 2'].replace('', pd.NA, inplace=True)
+            
             # Remove duplicate rows
             df_authorships = df_authorships.drop_duplicates()
             openalex_found_dois = len(df_authorships)
@@ -211,7 +214,7 @@ if dois:
 
                 # Function to update country_code if missing and mark the source
                 def update_country_code(row):
-                    if not row['Country Code 2'] and row['author_id']:
+                    if pd.isna(row['Country Code 2']) and row['author_id']:
                         author_details = fetch_author_details(row['author_id'])
                         if author_details:
                             affiliations = author_details.get('affiliations', [])
