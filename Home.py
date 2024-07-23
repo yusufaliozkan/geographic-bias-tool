@@ -269,16 +269,18 @@ if dois:
                 def gbi_tool():
                     on = st.toggle('Display dashboard for country breakdown')
                     if on:
-                        st.write('Dashboard')
-                        country_counts = df_authorships['Country Name'].value_counts().reset_index()
-                        country_counts.columns = ['Country Name', 'Count']
-                        fig = px.bar(country_counts, x='Country Name', y='Count', title='Country Counts')
-                        st.plotly_chart(fig, use_container_width = True)
-
-                        income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
-                        income_level_counts.columns = ['Income Level', 'Count']
-                        fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
-                        st.plotly_chart(fig2, use_container_width = True)
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.write('Dashboard')
+                            country_counts = df_authorships['Country Name'].value_counts().reset_index()
+                            country_counts.columns = ['Country Name', 'Count']
+                            fig = px.bar(country_counts, x='Country Name', y='Count', title='Country Counts')
+                            col1.plotly_chart(fig, use_container_width = True)
+                        with col1:
+                            income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
+                            income_level_counts.columns = ['Income Level', 'Count']
+                            fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
+                            col2.plotly_chart(fig2, use_container_width = True)
                 
                 gbi_tool()
                 df_final    
