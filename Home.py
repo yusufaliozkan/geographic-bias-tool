@@ -41,6 +41,7 @@ if dois:
     
     # Create a DataFrame
     df_dois = pd.DataFrame(doi_list, columns=["doi"])
+    df_dois['doi'] = df_dois['doi'].replace('https://doi.org/', '')
     df_dois = df_dois.drop_duplicates().reset_index(drop=True)
     no_dois = len(df_dois)
     st.info(f'You entered {no_dois} unique DOIs')
