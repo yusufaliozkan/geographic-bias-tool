@@ -242,7 +242,7 @@ if dois:
 
 
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
-                st.write(f'Citation Source Index: **{round(citation_source_index, 2)}**')
+                st.metric(label='Citation Source Index', value=f'{round(citation_source_index, 2)}',
                 st.write(f'Number of unique authors: **{no_authors}**')
                 
                 df_final    
