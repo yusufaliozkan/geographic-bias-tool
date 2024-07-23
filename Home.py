@@ -209,6 +209,6 @@ if dois:
             st.write(f'Citation Source Index: {round(citation_source_index, 2)}')
             df_final = df_authorships[['Citation Source Index', 'doi', 'title', 'all_authors', 'Countries']].drop_duplicates().reset_index(drop=True)
             df_final
-            status.update(label="Calculation complete!", state="complete", expanded=False)
+            status.update(label="Calculation complete!", state="complete", expanded=True)
 else:
     st.write("Enter DOIs in the text area to see the DataFrame.")
