@@ -65,7 +65,7 @@ def gbi_tool():
 
             if submit:
                 st.session_state['status_expanded'] = True
-            with st.status("Finding sources and calculating CSI...", expanded=True) as status:
+            with st.status("Finding sources and calculating CSI...", expanded=st.session_state.get('status_expanded', True)) as status:
                 ## OPENALEX DATA RETRIEVAL
                 def fetch_authorship_info_and_count(doi):
                     url = f"https://api.openalex.org/works/doi:{doi}"
