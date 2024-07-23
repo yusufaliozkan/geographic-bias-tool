@@ -388,6 +388,8 @@ if dois:
 
                 source =   df_authorships['source'].value_counts().reset_index()
                 source
+                st.write(source)
+
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
     st.warning("Enter DOIs in the text area or upload a file to calculate the Citation Source Index.")
