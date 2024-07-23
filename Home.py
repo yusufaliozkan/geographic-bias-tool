@@ -21,7 +21,12 @@ with st.sidebar:
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This tool is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 """
 )
-
+st.markdown(
+    """
+    [![Imperial College London Logo](https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png)](https://www.imperial.ac.uk)
+    """,
+    unsafe_allow_html=True
+)
 st.image('https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png', width=300)
 st.header('Geographic Bias Tool', anchor=False)
 
