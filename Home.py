@@ -195,7 +195,7 @@ if dois:
             df_authorships = df_authorships.drop_duplicates()
             openalex_found_dois = len(df_authorships)
             if openalex_found_dois == 0:
-                st.warning('''
+                st.error('''
                 No DOIs found! 
 
                 Check your DOIs and submit them again. 
