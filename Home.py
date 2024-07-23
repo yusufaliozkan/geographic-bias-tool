@@ -73,28 +73,30 @@ with st.popover('About this tool'):
     Country income statuses are retrieved from [World Bank API](https://api.worldbank.org/v2/country/?per_page=1000).
     '''
     )
-dois = st.text_area(
-    'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
-    help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
-    placeholder=''' e.g.
-    10.1136/bmjgh-2023-013696
-    10.1097/jac.0b013e31822cbdfd
-    '''
-    )
 
-
-uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
-
-if uploaded_file is not None:
-    # Read the uploaded CSV file into a DataFrame
-    df = pd.read_csv(uploaded_file)
-    
-    # Display the DataFrame
-    st.write("Here is the data from the uploaded CSV file:")
-    st.write(df)
+radio = st.radio('Select an option', ['Insert DOIs', 'Upload a file with DOIs'])
+if radio == 'Insert DOIs':
+    dois = st.text_area(
+        'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
+        help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
+        placeholder=''' e.g.
+        10.1136/bmjgh-2023-013696
+        10.1097/jac.0b013e31822cbdfd
+        '''
+        )
 else:
-    st.write("Please upload a CSV file to see the content.") 
-    
+    uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+
+    if uploaded_file is not None:
+        # Read the uploaded CSV file into a DataFrame
+        df = pd.read_csv(uploaded_file)
+        
+        # Display the DataFrame
+        st.write("Here is the data from the uploaded CSV file:")
+        st.write(df)
+    else:
+        st.write("Please upload a CSV file to see the content.") 
+
 if dois:
     # Split the input text into individual DOIs based on newline character
     doi_list = dois.split('\n')
