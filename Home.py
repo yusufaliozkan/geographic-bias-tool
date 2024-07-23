@@ -390,9 +390,12 @@ if dois:
                             color='Count',
                             hover_name='Country Name',
                             color_continuous_scale='Viridis',
-                            title='Country Counts'
+                            title='Author Affiliations on Map'
                         )
-
+                        fig.update_layout(
+                            width=1200,  # Set the width as per your requirement
+                            height=700   # Set the height as per your requirement
+                        )
                         st.plotly_chart(fig, use_container_width=True)
                 
                 gbi_tool()
