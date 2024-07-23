@@ -250,7 +250,7 @@ if dois:
                 no_authors = df_authorships['author_name'].nunique()
                 no_doi_found = df_final['DOI'].nunique()
 
-
+                df_authorships
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
                 col1, col2 = st.columns(2)
                 with col1:
