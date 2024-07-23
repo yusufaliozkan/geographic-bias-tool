@@ -33,6 +33,26 @@ st.markdown(
 )
 st.title('Geographic Bias Tool', anchor=False)
 
+with st.popover('About this tool'):
+    st.subheader('What is Geographic Bias Tool?')
+    st.write('''
+    Geographic Bias Tool aims to present data on the diversity of countries and country income level of authors.
+    You can submit DOIs of publications to see the authors' country affiliations and country income statuses.
+    '''
+    )
+    st.subheader('What is Citation Source Index (CSI)?')
+    st.write('''
+    Citation Source Index (CSI) is a weighted average of the World Bank rankings for Gross National Income (GNI) per capita of the countries where the authors in that citation are from. 
+
+    The CSI ranges from 0 to 1, so a CSI closer to 1 means the overall development index of the countries represented by the authors that published the article is high or vice versa. 
+    If the authors on an article were all from Afghanistan then the CSI would be 0.01. 
+    If the authors on an article were all from the UK then the CSI would be 0.88. 
+    The CSI for the reading list as a whole is the average of all the CSI scores for the readings provided on that list and that are available for analysis through this platform.
+
+    For more information, the following article: https://link.springer.com/article/10.1007/s11192-021-04231-3
+    '''
+    )
+
 dois = st.text_area(
     'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
     help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
