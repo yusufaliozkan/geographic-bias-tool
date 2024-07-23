@@ -27,7 +27,7 @@ st.header('Geographic Bias Tool')
 dois = st.text_area(
     'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
     help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
-    placeholder='''
+    placeholder=''' e.g.
     10.1136/bmjgh-2023-013696
     10.1097/jac.0b013e31822cbdfd
     '''
