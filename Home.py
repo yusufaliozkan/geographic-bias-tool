@@ -85,11 +85,11 @@ if radio == 'Insert DOIs':
         '''
         )
 else:
-    uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+    dois = st.file_uploader("Choose a CSV file", type="csv")
 
-    if uploaded_file is not None:
+    if dois is not None:
         # Read the uploaded CSV file into a DataFrame
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(dois)
         
         # List of possible DOI column names
         doi_columns = ['doi', 'DOI', 'dois', 'DOIs']
