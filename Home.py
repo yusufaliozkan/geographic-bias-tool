@@ -233,8 +233,8 @@ if dois:
 
                 st.markdown(f'### Citation Source Index: {round(citation_source_index, 2)}')
                 st.info(f'Results found for {no_doi_found} DOIs out of {no_dois}')
-                with st.expander('See set'):
-                    df_final    
+                
+                df_final    
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
     st.warning("Enter DOIs in the text area to calculate the Citation Source Index.")
