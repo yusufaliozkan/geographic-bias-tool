@@ -388,7 +388,9 @@ if dois:
 
                 source =   df_authorships['source'].value_counts().reset_index()
                 result_text = ", ".join([f"{row['count']} country affiliation found on {row['source']}" for index, row in source.iterrows()])
-                st.write(result_text)
+                st.write(f'''**Note:** {result_text}. 
+                Country affiliation found on author profile page may not be reliable because author profile page can contain different author information for similar names.
+                ''')
 
                 status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
 else:
