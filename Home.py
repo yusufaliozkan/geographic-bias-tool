@@ -117,7 +117,6 @@ else:
             df_dois.columns = ['doi']  # Standardize column name to 'DOI'
         
         else:
-            df_dois
             st.write("No DOI column in the file.")
             st.stop()
     else:
