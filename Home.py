@@ -26,7 +26,7 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
-    st.subheader("Geographic Bias Tool",anchor=False)  
+    st.header("Geographic Bias Tool",anchor=False)  
     with st.expander('Licence'):  
         st.write('Licence')
         display_custom_license()
