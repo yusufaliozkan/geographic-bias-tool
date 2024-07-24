@@ -177,7 +177,7 @@ if df_dois is not None and len(df_dois) > 500:
     st.error('Please enter 500 or fewer DOIs')
 
 else:
-    if df_dois > 100:
+    if len(df_dois) > 100:
         st.toast('You entered over 100 DOIs. It may take some time to retrieve results. Please wait.')
     if dois:
 
