@@ -185,9 +185,7 @@ else:
         df_dois = df_dois.drop_duplicates().reset_index(drop=True)
         no_dois = len(df_dois)
         if len(df_dois) >100:
-            warning_message = st.warning('You entered over 100 DOIs. It may take some time to retrieve results. Please wait.')
-            time.sleep(30)
-            warning_message.empty()
+            st.warning('You entered over 100 DOIs. It may take some time to retrieve results.')
         st.info(f'You entered {no_dois} unique DOIs')
         with st.expander(f'See the DOIs you entered'):
             df_dois
