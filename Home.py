@@ -96,6 +96,7 @@ with col1:
 
             ''')
 
+df_dois = None
 
 radio = st.radio('Select an option', ['Insert DOIs', 'Upload a file with DOIs'])
 if radio == 'Insert DOIs':
