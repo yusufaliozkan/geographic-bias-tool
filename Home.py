@@ -82,7 +82,15 @@ with col1:
             )
         with st.expander('Limitations'):
             st.write(f'''
-            * The tool searches 
+            * The tool searches author affiliations with DOIs. Items without a DOI will be excluded from the search. 
+            Some output types (such as journal articles) are usually assigned more DOIs than other types. 
+            So, for instance, you may not be able to find author affiliations for books or book chapters.
+
+            * This tool identifies affiliations from the [OpenAlex database](https://openalex.org/).
+            OpenAlex may not be able to identify all DOIs or author affiliations for various reasons. 
+
+            * Where the affiliation information is not available for an author on the article page, the tool goes to the author's profile page on OpenAlex and checks the affiliation from there.
+            This may not always give the best result as similar names can be listed under the same author profile page. 
             '''
             )
         with st.expander('Reading list about the project'):
