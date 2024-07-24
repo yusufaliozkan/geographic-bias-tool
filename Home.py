@@ -156,8 +156,6 @@ if dois:
         st.error('You can only enter 500 or less DOI')
         st.stop()
 
-    else:
-        st.write('checking dois')
 
     df_dois['doi'] = df_dois['doi'].str.replace('https://doi.org/', '')
     df_dois = df_dois.drop_duplicates().reset_index(drop=True)
