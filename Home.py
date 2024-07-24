@@ -150,7 +150,7 @@ else:
     else:
         st.write("Please upload a CSV file to calculate CSI.")
 
-if len(dois) > 501:
+if len(dois) < 501:
     st.error('You can only enter 500 or less DOI')
     st.stop()
 
