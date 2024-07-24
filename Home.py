@@ -149,7 +149,8 @@ else:
             st.stop()
     else:
         st.write("Please upload a CSV file to calculate CSI.")
-if df_dois is not None and len(df_dois) > 500 or not dois:
+df_dois
+if df_dois is not None and len(df_dois) > 500:
     st.error('Please enter 500 or fewer DOIs')
 
 else:
