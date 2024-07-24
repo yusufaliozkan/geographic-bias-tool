@@ -150,6 +150,10 @@ else:
     else:
         st.write("Please upload a CSV file to calculate CSI.")
 
+if len(dois) > 501:
+    st.error('You can only enter 500 or less DOI')
+    st.stop()
+
 if dois:
 
     df_dois['doi'] = df_dois['doi'].str.replace('https://doi.org/', '')
