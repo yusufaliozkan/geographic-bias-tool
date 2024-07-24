@@ -9,7 +9,7 @@ import plotly.express as px
 from copyright import display_custom_license
 import numpy as np
 import plotly.express as px
-
+import time
 
 st.set_page_config(layout = "wide", 
                     page_title='Geographic Bias Tool',
@@ -185,7 +185,9 @@ else:
         df_dois = df_dois.drop_duplicates().reset_index(drop=True)
         no_dois = len(df_dois)
         if len(df_dois) >100:
-            st.warning('You entered over 100 DOIs. It may take some time to retrieve results. Please wait.')
+            warning_message = st.warning('You entered over 100 DOIs. It may take some time to retrieve results. Please wait.')
+            time.sleep(30)
+            warning_message.empty()
         st.info(f'You entered {no_dois} unique DOIs')
         with st.expander(f'See the DOIs you entered'):
             df_dois
