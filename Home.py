@@ -18,7 +18,14 @@ st.set_page_config(layout = "wide",
 pd.set_option('display.max_colwidth', None)
 
 with st.sidebar:
-    st.image('https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png', width=150)
+    st.markdown(
+        """
+        <a href="https://www.imperial.ac.uk">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" width="150">
+        </a>
+        """,
+        unsafe_allow_html=True
+    )
     st.subheader("Geographic Bias Tool",anchor=False)  
     with st.expander('Licence'):  
         st.write('Licence')
