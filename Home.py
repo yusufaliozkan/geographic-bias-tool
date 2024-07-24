@@ -120,6 +120,7 @@ if radio == 'Insert DOIs':
     df_dois = pd.DataFrame(doi_list, columns=["doi"])
 else:
     st.write('Please upload and submit a .csv file of DOIs (commencing “10.") in separate rows. **Maximum 500 DOIs permitted**!')
+    st.warning('The title of the column containing DOIs should be one of the followings: doi, DOI, dois, DOIs, Hyperlinked DOI. Otherwise the tool will not identify DOIs.')
     dois = st.file_uploader("Choose a CSV file", type="csv")
 
     if dois is not None:
