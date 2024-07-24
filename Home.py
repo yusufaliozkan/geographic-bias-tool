@@ -46,8 +46,10 @@ with col1:
     with st.popover('About this tool', use_container_width=False):
     
         st.write('''
-        Geographic Bias Tool aims to present data on the diversity of countries and country income level of authors.
-        You can submit DOIs of publications to see the authors' country affiliations and country income statuses.
+        Geographic Bias Tool aims to present data on the diversity of countries and country income level of authors. 
+        You can submit DOIs of publications to see the authors' country affiliations and country income statuses. 
+        The tool aims to identify authors of given DOIs and found their country affiliations. Countries are ranked based on [World Bank GNI per capita, Atlas method](https://data.worldbank.org/indicator/NY.GNP.PCAP.CD). 
+        The Citation Source Index is calculated to show the geographic bias of the given publication set.
         '''
         )
 
