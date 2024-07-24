@@ -184,6 +184,8 @@ else:
         df_dois['doi'] = df_dois['doi'].str.replace('https://doi.org/', '')
         df_dois = df_dois.drop_duplicates().reset_index(drop=True)
         no_dois = len(df_dois)
+        if len(df_dois) >100:
+            st.warning('You entered over 100 DOIs. It may take some time to retrieve results. Please wait.')
         st.info(f'You entered {no_dois} unique DOIs')
         with st.expander(f'See the DOIs you entered'):
             df_dois
