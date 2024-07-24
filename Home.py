@@ -80,7 +80,11 @@ with col1:
             Country income statuses are retrieved from [World Bank API](https://api.worldbank.org/v2/country/?per_page=1000).
             '''
             )
-
+        with st.expander('Limitations'):
+            st.write(f'''
+            * The tool searches 
+            '''
+            )
         with st.expander('Reading list about the project'):
             st.caption(f'''
             Harris, Matthew. *Decolonizing Healthcare Innovation: Low-Cost Solutions from Low-Income Countries*. Routledge, 2024, https://www.routledge.com/Decolonizing-Healthcare-Innovation-Low-Cost-Solutions-from-Low-Income-Countries/Harris/p/book/9781032284958.
