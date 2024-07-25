@@ -440,6 +440,7 @@ else:
                                 country_counts = country_counts.drop(columns=['Unnamed: 0', 'Country Code 3', 'Country Code 2', 'name', 'Year','GNI'])
                                 columns = ['Country Name', 'Rank', 'incomeLevel', 'Count']
                                 country_counts = country_counts[columns]
+                                country_counts = country_counts.sort_values(subset='Rank', ascending=True)
                                 country_counts
                             with col1:
                                 income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
