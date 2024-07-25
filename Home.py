@@ -497,7 +497,8 @@ else:
                                     "Hyperlinked DOI": st.column_config.LinkColumn(
                                         "DOI",
                                         help="Click to access the DOI link",
-                                        display_text="https://doi.org/(.*?)$"
+                                        display_text="https://doi.org/(.*?)$",
+                                        disabled=True
                                     )
                                 },
                                 hide_index=True,
