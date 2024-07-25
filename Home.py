@@ -467,7 +467,7 @@ else:
                                 col2.plotly_chart(fig3, use_container_width = True)                   
                     gbi_tool()
 
-                    col1, col2 = st.columns([3,1])
+                    col1, col2 = st.columns([3,2])
                     with col1:
                         country_counts = df_authorships['Country Name'].value_counts().reset_index()
                         country_counts.columns = ['Country Name', 'Count']
