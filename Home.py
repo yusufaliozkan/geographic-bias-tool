@@ -481,7 +481,7 @@ else:
                         }
                         country_counts = country_counts.rename(columns=new_column_names)
                         country_counts = country_counts.sort_values(by='Rank', ascending=True).reset_index(drop=True)
-                        st.markdown('#### Author country affiliations, country ranks, and income statuses', anchor=False)
+                        st.markdown('#### Author country affiliations, country ranks, and income statuses')
                         country_counts
                     with col2:
                         fig3 = px.box(df_final, y= 'Citation Source Index', title='Box Plot of Citation Source Index')
