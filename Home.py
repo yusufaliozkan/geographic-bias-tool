@@ -495,12 +495,12 @@ else:
                                 df_final,
                                 column_config={
                                     'DOI': st.column_config.LinkColumn(
-                                        'DOI', 
-                                        help='Go to publication page'
+                                        name='DOI',
+                                        help='Go to publication page',
+                                        validate="^https://doi.org/.*$",
+                                        display_text="https://doi.org/(.*?)"
                                     )
                                 },
-                                validate="^https://doi.org/[a-zA-Z0-9.-]+$",
-                                display_text="https://doi.org/(.*?)",
                                 use_container_width=True,
                                 hide_index=True,
                             )
