@@ -493,7 +493,7 @@ else:
                             df_final['Hyperlinked DOI']='https://doi.org/'+df_final['DOI']
                             st.data_editor(
                                 df_final,
-                                column_config={'Hyperlinked DOI':st.column_config.LinkColumn('Hyperlinked', help='Got to publication page')},
+                                column_config={'Hyperlinked DOI':st.column_config.LinkColumn('Hyperlinked DOI', help='Got to publication page')},
                                 use_container_width=True,
                                 hide_index=True,
                             )
