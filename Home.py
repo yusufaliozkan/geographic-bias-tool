@@ -460,7 +460,9 @@ else:
                                 height=700   # Set the height as per your requirement
                             )
                             st.plotly_chart(fig, use_container_width=True)
-                    
+
+                            fig3 = px.box(df_final, x= 'Citation Source Index', title='Box Plot of Citation Source Index')
+                            fig3.show()                    
                     gbi_tool()
 
                     country_counts = df_authorships['Country Name'].value_counts().reset_index()
