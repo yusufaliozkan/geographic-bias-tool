@@ -439,6 +439,7 @@ else:
                                 country_counts = pd.merge(country_counts, df_countries, left_on='Country Name', right_on='name')
                                 country_counts = country_counts.drop(columns=['Unnamed: 0', 'Country Code 3', 'Country Code 2', 'name'])
                                 country_counts
+                                df_result
                             with col1:
                                 income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
                                 income_level_counts.columns = ['Income Level', 'Count']
