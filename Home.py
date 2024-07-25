@@ -463,8 +463,9 @@ else:
                             st.plotly_chart(fig, use_container_width=True)
                     
                     gbi_tool()
-                    
-                    df_final  
+                    display = st.checkbox('Display publications')
+                    if display:
+                        df_final  
 
                     source =   df_authorships['source'].value_counts().reset_index()
                     result_text = ", ".join([f"**{row['count']}** country affiliations found on **{row['source']}**" for index, row in source.iterrows()])
