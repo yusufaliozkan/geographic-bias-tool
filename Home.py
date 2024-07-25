@@ -502,6 +502,7 @@ else:
                                     )
                                 },
                                 hide_index=True,
+                                disabled=True
                             )
                             # column_configuration = {'Hyperlinked':st.column_config.LinkColumn('Hyperlinked', help='Got to publication page')}
                             df_final
