@@ -445,7 +445,7 @@ else:
                             with col1:
                                 income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
                                 income_level_counts.columns = ['Income Level', 'Count']
-                                fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
+                                fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts').reset_index(drop=True)
                                 col2.plotly_chart(fig2, use_container_width = True)
                             fig = px.choropleth(
                                 country_counts,
