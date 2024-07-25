@@ -491,22 +491,22 @@ else:
                         display = st.checkbox('Display publications')
                         if display:
                             df_final['Hyperlinked DOI']='https://doi.org/'+df_final['DOI']
-                            df_final["DOI"] = df_final["DOI"].apply(lambda x: f'<a href="https://doi.org/{x}">{x}</a>')
 
-                            st.data_editor(
-                                df_final,
-                                column_config={
-                                    "DOI": st.column_config.LinkColumn(
-                                        "DOI",
-                                        help="Click to access the DOI link",
-                                        display_text="https://doi.org/(.*?)$",
-                                        disabled=True
-                                    )
-                                },
-                                hide_index=True,
-                                disabled=True
-                            )
+                            # st.data_editor(
+                            #     df_final,
+                            #     column_config={
+                            #         "DOI": st.column_config.LinkColumn(
+                            #             "DOI",
+                            #             help="Click to access the DOI link",
+                            #             display_text="https://doi.org/(.*?)$",
+                            #             disabled=True
+                            #         )
+                            #     },
+                            #     hide_index=True,
+                            #     disabled=True
+                            # )
                             # column_configuration = {'Hyperlinked':st.column_config.LinkColumn('Hyperlinked', help='Got to publication page')}
+                            df_final
                     display_table()
                     source =   df_authorships['source'].value_counts().reset_index()
                     result_text = ", ".join([f"**{row['count']}** country affiliations found on **{row['source']}**" for index, row in source.iterrows()])
