@@ -441,7 +441,6 @@ else:
                                 columns = ['Country Name', 'Rank', 'incomeLevel', 'Count']
                                 country_counts = country_counts[columns]
                                 country_counts = country_counts.sort_values(by='Rank', ascending=True).reset_index(drop=True)
-                                country_counts
                             with col1:
                                 income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
                                 income_level_counts.columns = ['Income Level', 'Count']
@@ -463,6 +462,7 @@ else:
                             st.plotly_chart(fig, use_container_width=True)
                     
                     gbi_tool()
+                    country_counts
 
                     @st.experimental_fragment
                     def display_table():
