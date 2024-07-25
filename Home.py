@@ -440,12 +440,12 @@ else:
                                 country_counts = country_counts.drop(columns=['Unnamed: 0', 'Country Code 3', 'Country Code 2', 'name', 'Year','GNI'])
                                 columns = ['Country Name', 'Rank', 'incomeLevel', 'Count']
                                 country_counts = country_counts[columns]
-                                country_counts = country_counts.sort_values(by='Rank', ascending=True)
+                                country_counts = country_counts.sort_values(by='Rank', ascending=True).reset_index(drop=True)
                                 country_counts
                             with col1:
                                 income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
                                 income_level_counts.columns = ['Income Level', 'Count']
-                                fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts').reset_index()
+                                fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
                                 col2.plotly_chart(fig2, use_container_width = True)
                             fig = px.choropleth(
                                 country_counts,
