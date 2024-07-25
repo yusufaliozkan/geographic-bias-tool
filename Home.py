@@ -498,6 +498,7 @@ else:
                                         "DOI",
                                         help="Click to access the DOI link",
                                         display_text="https://doi.org/(.*?)$",
+                                        validated="https://doi.org/(.*?)$",
                                         disabled=True
                                     )
                                 },
