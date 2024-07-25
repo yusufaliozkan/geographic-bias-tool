@@ -504,6 +504,7 @@ else:
     else:
         st.warning("Enter DOIs in the text area or upload a file to calculate the Citation Source Index.")
 st.data_editor(
+    df_final,
     column_config=column_configuration,
     use_container_width=True,
     hide_index=True,
