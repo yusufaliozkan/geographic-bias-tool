@@ -491,7 +491,13 @@ else:
                         display = st.checkbox('Display publications')
                         if display:
                             df_final['Hyperlinked DOI']='https://doi.org/'+df_final['DOI']
-                            column_configuration = {'Hyperlinked':st.column_config.LinkColumn('Hyperlinked DOI', help='Got to publication page')}
+                            st.data_editor(
+                                df_final,
+                                column_config={'Hyperlinked':st.column_config.LinkColumn('Hyperlinked DOI', help='Got to publication page')},
+                                use_container_width=True,
+                                hide_index=True,
+                            )
+                            # column_configuration = {'Hyperlinked':st.column_config.LinkColumn('Hyperlinked', help='Got to publication page')}
                             df_final
                     display_table()
                     source =   df_authorships['source'].value_counts().reset_index()
@@ -503,11 +509,4 @@ else:
                     status.update(label=f"Calculation complete! Results found for {no_doi_found} DOIs", state="complete", expanded=True)
     else:
         st.warning("Enter DOIs in the text area or upload a file to calculate the Citation Source Index.")
-st.data_editor(
-    df_final,
-    column_config=column_configuration,
-    use_container_width=True,
-    hide_index=True,
-
-)
 display_custom_license()
