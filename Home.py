@@ -28,7 +28,6 @@ with st.sidebar:
     )
     st.header("Geographic Bias Tool",anchor=False)  
     with st.expander('Licence'):  
-        st.write('Licence')
         display_custom_license()
     with st.expander('Source code'):
         st.write('Source code and datasets used for this tool are available here: [Geographic Bias Tool GitHub repo](https://github.com/yusufaliozkan/geographic-bias-tool/blob/main/Home.py)')
