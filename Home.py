@@ -437,8 +437,8 @@ else:
                                 fig = px.bar(country_counts, x='Country Name', y='Count', title='Country Counts')
                                 col1.plotly_chart(fig, use_container_width = True)
                                 country_counts
-                                # country_counts = pd.merge(country_counts, )
-                                df_countries
+                                country_counts = pd.merge(country_counts, df_countries, left_on='Country Name', right_on='name')
+                                country_counts
                             with col1:
                                 income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
                                 income_level_counts.columns = ['Income Level', 'Count']
