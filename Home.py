@@ -446,23 +446,25 @@ else:
                                 income_level_counts.columns = ['Income Level', 'Count']
                                 fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
                                 col2.plotly_chart(fig2, use_container_width = True)
-                            fig = px.choropleth(
-                                country_counts,
-                                locations='Country Name',
-                                locationmode='country names',
-                                color='Count',
-                                hover_name='Country Name',
-                                color_continuous_scale='Viridis',
-                                title='Author Affiliations on Map'
-                            )
-                            fig.update_layout(
-                                width=1200,  # Set the width as per your requirement
-                                height=700   # Set the height as per your requirement
-                            )
-                            st.plotly_chart(fig, use_container_width=True)
-
-                            fig3 = px.box(df_final, y= 'Citation Source Index', title='Box Plot of Citation Source Index')
-                            st.plotly_chart(fig3, use_container_width = True)                   
+                            col1, col2 = st.columns([3,1])
+                            with col1:
+                                fig = px.choropleth(
+                                    country_counts,
+                                    locations='Country Name',
+                                    locationmode='country names',
+                                    color='Count',
+                                    hover_name='Country Name',
+                                    color_continuous_scale='Viridis',
+                                    title='Author Affiliations on Map'
+                                )
+                                fig.update_layout(
+                                    width=1200,  # Set the width as per your requirement
+                                    height=700   # Set the height as per your requirement
+                                )
+                                col1.plotly_chart(fig, use_container_width=True)
+                            with col2:
+                                fig3 = px.box(df_final, y= 'Citation Source Index', title='Box Plot of Citation Source Index')
+                                col2.plotly_chart(fig3, use_container_width = True)                   
                     gbi_tool()
 
                     country_counts = df_authorships['Country Name'].value_counts().reset_index()
