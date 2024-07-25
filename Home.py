@@ -31,7 +31,12 @@ with st.sidebar:
         display_custom_license()
     with st.expander('Source code'):
         st.write('Source code and datasets used for this tool are available here: [Geographic Bias Tool GitHub repo](https://github.com/yusufaliozkan/geographic-bias-tool/blob/main/Home.py)')
-        https://img.shields.io/badge/-you_like-blue
+        icon("🎪")
+        """
+        # Streamlit Components Hub
+
+        [![](https://img.shields.io/github/stars/jrieke/components-hub?style=social)](https://github.com/jrieke/components-hub) &nbsp; [![](https://img.shields.io/twitter/follow/jrieke?style=social)](https://twitter.com/jrieke)
+        """
     with st.expander('Contact'):
         st.write('For your questions, you can contact [Yusuf Ozkan, Research Outputs Analyst](https://profiles.imperial.ac.uk/y.ozkan) at Imperial College London.')
 
