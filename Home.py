@@ -494,12 +494,13 @@ else:
                             st.data_editor(
                                 df_final,
                                 column_config={
-                                    'DOI':st.column_config.LinkColumn(
+                                    'DOI': st.column_config.LinkColumn(
                                         'DOI', 
-                                        help='Got to publication page'),
-                                        validate="^https://doi.org/[a-z]$",
-                                        display_text="https://doi.org/(.*?)",
-                                        },
+                                        help='Go to publication page'
+                                    )
+                                },
+                                validate="^https://doi.org/[a-zA-Z0-9.-]+$",
+                                display_text="https://doi.org/(.*?)",
                                 use_container_width=True,
                                 hide_index=True,
                             )
