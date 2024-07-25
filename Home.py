@@ -493,7 +493,11 @@ else:
                             df_final['Hyperlinked DOI']='https://doi.org/'+df_final['DOI']
                             st.data_editor(
                                 df_final,
-                                column_config={'Hyperlinked DOI':st.column_config.LinkColumn('Hyperlinked DOI', help='Got to publication page')},
+                                column_config={
+                                    'DOI':st.column_config.LinkColumn(
+                                        'DOI', 
+                                        help='Got to publication page'),
+                                        validate='^https://doi.org/'[a-z]},
                                 use_container_width=True,
                                 hide_index=True,
                             )
