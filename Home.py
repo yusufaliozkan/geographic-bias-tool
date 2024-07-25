@@ -497,8 +497,8 @@ else:
                                     'DOI':st.column_config.LinkColumn(
                                         'DOI', 
                                         help='Got to publication page'),
-                                        validate='^https://doi.org/[a-z]$',
-                                        display_text='https://doi.org/(.*?)',
+                                        validate="^https://doi.org/[a-z]$",
+                                        display_text="https://doi.org/(.*?)",
                                         },
                                 use_container_width=True,
                                 hide_index=True,
