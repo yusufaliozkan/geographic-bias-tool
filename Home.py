@@ -491,18 +491,7 @@ else:
                         display = st.checkbox('Display publications')
                         if display:
                             df_final['Hyperlinked DOI']='https://doi.org/'+df_final['DOI']
-                            st.data_editor(
-                                df_final,
-                                column_config={
-                                    'DOI': st.column_config.LinkColumn(
-                                        name='DOI',
-                                        help='Go to publication page',
-                                        validate='https://doi.org/'+df_final['DOI']
-                                    )
-                                },
-                                use_container_width=True,
-                                hide_index=True,
-                            )
+                            df_final['DOI'] = df_final['DOI'].apply(lambda x: f'<a href="https://doi.org/{x}" target="_blank">{x}</a>')
                             # column_configuration = {'Hyperlinked':st.column_config.LinkColumn('Hyperlinked', help='Got to publication page')}
                             df_final
                     display_table()
