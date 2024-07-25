@@ -461,7 +461,7 @@ else:
                             )
                             st.plotly_chart(fig, use_container_width=True)
 
-                            fig3 = px.box(df_final, x= 'Citation Source Index', title='Box Plot of Citation Source Index')
+                            fig3 = px.box(df_final, y= 'Citation Source Index', title='Box Plot of Citation Source Index')
                             st.plotly_chart(fig3, use_container_width = True)                   
                     gbi_tool()
 
