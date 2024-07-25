@@ -462,6 +462,14 @@ else:
                             st.plotly_chart(fig, use_container_width=True)
                     
                     gbi_tool()
+
+                    country_counts = df_authorships['Country Name'].value_counts().reset_index()
+                    country_counts.columns = ['Country Name', 'Count']
+                    country_counts = pd.merge(country_counts, df_result, on='Country Name')
+                    country_counts = country_counts.drop(columns=['Unnamed: 0', 'Country Code 3', 'Country Code 2', 'name', 'Year','GNI'])
+                    columns = ['Country Name', 'Rank', 'incomeLevel', 'Count']
+                    country_counts = country_counts[columns]
+                    country_counts = country_counts.sort_values(by='Rank', ascending=True).reset_index(drop=True)
                     country_counts
 
                     @st.experimental_fragment
