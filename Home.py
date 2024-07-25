@@ -491,6 +491,7 @@ else:
                         display = st.checkbox('Display publications')
                         if display:
                             df_final['Hyperlinked DOI']='https://doi.org/'+df_final['DOI']
+                            column_configuration = {'Hyperlinked':st.column_config.LinkColumn('Hyperlinked DOI', help='Got to publication page')}
                             df_final
                     display_table()
                     source =   df_authorships['source'].value_counts().reset_index()
