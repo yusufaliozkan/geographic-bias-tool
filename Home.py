@@ -32,7 +32,7 @@ with st.sidebar:
     with st.expander('Source code'):
         st.write('Source code and datasets used for this tool are available here: [Geographic Bias Tool GitHub repo](https://github.com/yusufaliozkan/geographic-bias-tool/blob/main/Home.py)')
         st.caption(
-            "[![GitHub repo](https://img.shields.io/badge/GitHub-repo-0a507a?logo=github)](https://github.com/yusufaliozkan/geographic-bias-tool) "
+            "[![GitHub GBT repo](https://img.shields.io/badge/GitHub-repo-0a507a?logo=github)](https://github.com/yusufaliozkan/geographic-bias-tool) "
         )
     with st.expander('Contact'):
         st.write('For your questions, you can contact [Yusuf Ozkan, Research Outputs Analyst](https://profiles.imperial.ac.uk/y.ozkan) at Imperial College London.')
