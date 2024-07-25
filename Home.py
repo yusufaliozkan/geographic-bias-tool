@@ -497,7 +497,7 @@ else:
                                     'DOI': st.column_config.LinkColumn(
                                         name='DOI',
                                         help='Go to publication page',
-                                        validate="^https://doi.org/.*$",
+                                        validate="^https://doi.org/[a-z]$",
                                         display_text="https://doi.org/(.*?)"
                                     )
                                 },
