@@ -293,7 +293,7 @@ else:
                     #     return row
                     # # Function to update country_code if missing and mark the source
                     def update_country_code(row):
-                        if pd.isna(row['Country Code 2']) and row['author_id']:
+                        if pd.isna(row['Country Code 2']):
                             author_details = fetch_author_details(row['author_id'])
                             if author_details:
                                 affiliations = author_details.get('affiliations', [])
