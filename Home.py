@@ -34,6 +34,13 @@ with st.sidebar:
         st.caption(
             "[![GitHub repo](https://img.shields.io/badge/GitHub-Geographic_Bias_Tool_repo-0a507a?logo=github)](https://github.com/yusufaliozkan/geographic-bias-tool) "
         )
+    with st.expander('Disclaimer'):
+        st.warning('''
+        There are some limitations of this tool (check the Limitation section under 'About this tool'). 
+        Therefore, this tool should not be used to compare articles or a set of publications and not used for any assessment purposes.
+
+        Although every effort is made to ensure accuracy and the tool is operational, the support may not be guaranteed. 
+        ''')
     with st.expander('Contact'):
         st.write('For your questions, you can contact [Yusuf Ozkan, Research Outputs Analyst](https://profiles.imperial.ac.uk/y.ozkan) at Imperial College London.')
 
