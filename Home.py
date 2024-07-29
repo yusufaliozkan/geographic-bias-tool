@@ -290,7 +290,7 @@ else:
                     # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
                     df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
 
-                    if exclude_author_profile_page:
+                    if not exclude_author_profile_page:
                         # Function to update country_code if missing and mark the source
                         def update_country_code(row):
                             if pd.isna(row['Country Code 2']) and row['author_id']:
