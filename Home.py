@@ -526,7 +526,8 @@ else:
                     display_table()
                     source =   df_authorships['source'].value_counts().reset_index()
                     result_text = ", ".join([f"**{row['count']}** country affiliations found on **{row['source']}**" for index, row in source.iterrows()])
-                    st.write(f'''**Note:** {result_text}. 
+                    if not exclude_author_profile_page:
+                        st.write(f'''**Note:** {result_text}. 
                     Country affiliations found on author profile page may not be reliable because author profile pages can contain different author information for similar names.
                     ''')
 
