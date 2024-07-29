@@ -36,7 +36,7 @@ with st.sidebar:
         )
     with st.expander('Disclaimer'):
         st.warning('''
-        There are some limitations of this tool (check the Limitation section under 'About this tool'). 
+        There are some limitations of this tool (check the Limitations section under 'About this tool'). 
         Therefore, this tool should not be used to compare articles or a set of publications and not used for any assessment purposes.
 
         Although every effort is made to ensure accuracy and the tool is operational, the support may not be guaranteed. 
