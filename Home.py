@@ -464,7 +464,7 @@ else:
                                 col2.plotly_chart(fig2, use_container_width = True)
                             col1, col2 = st.columns([3,1])
                             with col1:
-                                citation_source_index
+                                value
                                 fig = px.choropleth(
                                     country_counts,
                                     locations='Country Name',
