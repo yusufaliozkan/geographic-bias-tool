@@ -473,7 +473,7 @@ else:
                                     color_continuous_scale='Viridis',
                                     title='Author Affiliations on Map'
                                 )
-                                country_counts
+                                fig
                                 fig.update_layout(
                                     width=1200,  # Set the width as per your requirement
                                     height=700   # Set the height as per your requirement
