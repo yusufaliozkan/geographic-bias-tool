@@ -306,7 +306,7 @@ else:
                     # Update country codes for rows where country_code is missing
                     df_authorships = df_authorships.apply(update_country_code, axis=1)
 
-                    if not exclude_author_profile_page:
+                    if exclude_author_profile_page:
                         df_authorships = df_authorships[df_authorships['source']!='author profile page']
                         df_authorships
                         
