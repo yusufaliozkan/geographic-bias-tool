@@ -227,13 +227,13 @@ else:
                         return '', [], 0
 
                 # Function to fetch author details using author ID
-                def fetch_author_details(author_id):
-                    response = requests.get(author_id)
-                    if response.status_code == 200:
-                        data = response.json()
-                        return data
-                    else:
-                        return None
+                # def fetch_author_details(author_id):
+                #     response = requests.get(author_id)
+                #     if response.status_code == 200:
+                #         data = response.json()
+                #         return data
+                #     else:
+                #         return None
 
                 # Fetch authorship information for each DOI and store it in a new DataFrame
                 authorship_data = []
