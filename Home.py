@@ -210,7 +210,12 @@ else:
         with col1:
             submit = st.button('Calculate Citation Source Index')
         with col2:
-            exclude_author_profile_page = st.checkbox('Do not show affiliations from the author profile page')
+            exclude_author_profile_page = st.checkbox(
+                'Do not show affiliations from the author profile page',
+                help='''
+                Country affiliations found on author profile page may not be reliable because author profile pages can contain different author information for similar names.
+                '''
+                )
 
         if submit or st.session_state.get('status_expanded', False):
 
