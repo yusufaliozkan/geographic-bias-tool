@@ -280,20 +280,20 @@ else:
                     df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
 
                     # Function to update country_code if missing and mark the source
-                    # def update_country_code(row):
-                    #     if pd.isna(row['Country Code 2']) and row['author_id']:
-                    #         author_details = fetch_author_details(row['author_id'])
-                    #         if author_details:
-                    #             affiliations = author_details.get('affiliations', [])
-                    #             if affiliations:
-                    #                 country_code = affiliations[0].get('institution', {}).get('country_code', '')
-                    #                 if country_code:
-                    #                     row['Country Code 2'] = country_code
-                    #                     row['source'] = 'author profile page'
-                    #     return row
+                    def update_country_code(row):
+                        if pd.isna(row['Country Code 2']) and row['author_id']:
+                            author_details = fetch_author_details(row['author_id'])
+                            if author_details:
+                                affiliations = author_details.get('affiliations', [])
+                                if affiliations:
+                                    country_code = affiliations[0].get('institution', {}).get('country_code', '')
+                                    if country_code:
+                                        row['Country Code 2'] = country_code
+                                        row['source'] = 'author profile page'
+                        return row
 
-                    # # Update country codes for rows where country_code is missing
-                    # df_authorships = df_authorships.apply(update_country_code, axis=1)
+                    # Update country codes for rows where country_code is missing
+                    df_authorships = df_authorships.apply(update_country_code, axis=1)
                     df_authorships['Country Code 2'] = df_authorships['Country Code 2'].fillna('No country info')
                     df_authorships['Country Code 2'] = df_authorships['Country Code 2'].replace('TW', 'CN')
                     df_authorships['Country Code 2'] = df_authorships['Country Code 2'].replace('RE', 'FR')
