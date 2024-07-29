@@ -307,7 +307,7 @@ else:
                     df_authorships = df_authorships.apply(update_country_code, axis=1)
 
                     if not exclude_author_profile_page:
-                        df_authorships = df_authorships[df_authorships['source']!='author page']
+                        df_authorships = df_authorships[df_authorships['source']!='author profile page']
                         df_authorships
                         
                     df_authorships['Country Code 2'] = df_authorships['Country Code 2'].fillna('No country info')
