@@ -40,6 +40,7 @@ with st.sidebar:
         Therefore, this tool should not be used to compare articles or a set of publications and never be used for any research performance assessment purposes.
 
         Although every effort is made to ensure accuracy and the tool is operational, the support may not be guaranteed. 
+        Bear in mind that there might be some technical issues caused by OpenAlex or Streamlit.
         ''')
     with st.expander('Contact'):
         st.write('For your questions, you can contact [Yusuf Ozkan, Research Outputs Analyst](https://profiles.imperial.ac.uk/y.ozkan) at Imperial College London.')
