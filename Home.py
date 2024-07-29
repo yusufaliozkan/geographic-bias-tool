@@ -213,7 +213,9 @@ else:
             exclude_author_profile_page = st.checkbox(
                 'Do not show affiliations from the author profile page',
                 help='''
-                Country affiliations found on author profile page may not be reliable because author profile pages can contain different author information for similar names.
+                Author affiliation may not always be present on the article page. 
+                In that case, the tool will go to the author profile and try to identify author affiliation from there.
+                However, country affiliations found on author profile pages may not be reliable because author profile pages can contain different author information for similar names.
                 '''
                 )
 
