@@ -243,9 +243,9 @@ else:
                     for author in authorship_info:
                         country_codes = author.get('countries', [])
                         source = 'article page'
-                        # if not country_codes:
-                        #     country_codes = ['']
-                        #     source = 'author profile page'
+                        if not country_codes:
+                            country_codes = ['']
+                            source = 'author profile page'
                         for country_code in country_codes:
                             author_record = {
                                 'doi': doi,
@@ -279,9 +279,21 @@ else:
                     # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
                     df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
 
-                    # Function to update country_code if missing and mark the source
+                    # # Function to update country_code if missing and mark the source
+                    # def update_country_code(row):
+                    #     if pd.isna(row['Country Code 2']) and row['author_id']:
+                    #         author_details = fetch_author_details(row['author_id'])
+                    #         if author_details:
+                    #             affiliations = author_details.get('affiliations', [])
+                    #             if affiliations:
+                    #                 country_code = affiliations[0].get('institution', {}).get('country_code', '')
+                    #                 if country_code:
+                    #                     row['Country Code 2'] = country_code
+                    #                     row['source'] = 'author profile page'
+                    #     return row
+                    # # Function to update country_code if missing and mark the source
                     def update_country_code(row):
-                        if pd.isna(row['Country Code 2']) and row['author_id']:
+                        if pd.isna(row['Country Code 2']):
                             author_details = fetch_author_details(row['author_id'])
                             if author_details:
                                 affiliations = author_details.get('affiliations', [])
@@ -289,9 +301,7 @@ else:
                                     country_code = affiliations[0].get('institution', {}).get('country_code', '')
                                     if country_code:
                                         row['Country Code 2'] = country_code
-                                        row['source'] = 'author profile page'
                         return row
-
                     # Update country codes for rows where country_code is missing
                     df_authorships = df_authorships.apply(update_country_code, axis=1)
                     df_authorships['Country Code 2'] = df_authorships['Country Code 2'].fillna('No country info')
