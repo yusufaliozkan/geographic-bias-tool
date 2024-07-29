@@ -464,7 +464,6 @@ else:
                                 col2.plotly_chart(fig2, use_container_width = True)
                             col1, col2 = st.columns([3,1])
                             with col1:
-                                value
                                 fig = px.choropleth(
                                     country_counts,
                                     locations='Country Name',
@@ -501,6 +500,7 @@ else:
                         st.markdown('###### Author country affiliations, country ranks, and income statuses')
                         country_counts
                     with col2:
+                        value
                         fig3 = px.box(df_final, y= 'Citation Source Index', title='Box Plot of Citation Source Index')
                         col2.plotly_chart(fig3, use_container_width = True)  
                     @st.experimental_fragment
