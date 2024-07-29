@@ -243,9 +243,9 @@ else:
                     for author in authorship_info:
                         country_codes = author.get('countries', [])
                         source = 'article page'
-                        if not country_codes:
-                            country_codes = ['']
-                            source = 'author profile page'
+                        # if not country_codes:
+                        #     country_codes = ['']
+                        #     source = 'author profile page'
                         for country_code in country_codes:
                             author_record = {
                                 'doi': doi,
