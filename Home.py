@@ -301,7 +301,6 @@ else:
                                     country_code = affiliations[0].get('institution', {}).get('country_code', '')
                                     if country_code:
                                         row['Country Code 2'] = country_code
-                                        row['source'] = 'author profile page'
                         return row
                     # Update country codes for rows where country_code is missing
                     df_authorships = df_authorships.apply(update_country_code, axis=1)
