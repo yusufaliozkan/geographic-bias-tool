@@ -500,7 +500,7 @@ else:
                         st.markdown('###### Author country affiliations, country ranks, and income statuses')
                         country_counts
                     with col2:
-                        if not citation_source_index == nan:
+                        if not citation_source_index == 'nan':
                             fig3 = px.box(df_final, y= 'Citation Source Index', title='Box Plot of Citation Source Index')
                             col2.plotly_chart(fig3, use_container_width = True)  
                     @st.experimental_fragment
