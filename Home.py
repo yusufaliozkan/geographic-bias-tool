@@ -277,7 +277,7 @@ else:
                     # Remove duplicate rows
                     df_authorships = df_authorships.drop_duplicates()
                     # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
-                    # df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
+                    df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
 
                     # # Function to update country_code if missing and mark the source
                     # def update_country_code(row):
