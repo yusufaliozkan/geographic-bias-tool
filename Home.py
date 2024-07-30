@@ -42,9 +42,9 @@ with st.sidebar:
         Although every effort is made to ensure accuracy and the tool is operational, the support may not be guaranteed. 
         Bear in mind that there might be some technical issues caused by OpenAlex or Streamlit.
 
-        The country information is retrieved from OpenAlex and might be changed in order to match it to the country name in the World Bank list. 
-        Therefore, some country names and disputed territories may not be shown in this tool. 
-        The creator of this tool will not accept any responsibility for this.
+        The country information is sourced from OpenAlex and may be adjusted to align with the country names used by the World Bank to generate the CSI. 
+        As a result, certain country names and disputed territories might be displayed differently or not be displayed in this tool. 
+        The creator of this tool assumes no responsibility for any omissions or inaccuracies.
         ''')
     with st.expander('Contact'):
         st.write('For your questions, you can contact [Yusuf Ozkan, Research Outputs Analyst](https://profiles.imperial.ac.uk/y.ozkan) at Imperial College London.')
@@ -123,9 +123,9 @@ with col1:
 
             * Bear in mind that this tool does not show authors' country of origin or background but shows the affiliated country where the author wrote the paper.
 
-            * The country information is retrieved from OpenAlex and might be changed in order to match it to the country name in the World Bank list. 
-            Therefore, some country names and disputed territories may not be shown in this tool. 
-            The creator of this tool will not accept any responsibility for this.
+            * The country information is sourced from OpenAlex and may be adjusted to align with the country names used by the World Bank to generate the CSI. 
+            As a result, certain country names and disputed territories might be displayed differently or not be displayed in this tool. 
+            The creator of this tool assumes no responsibility for any omissions or inaccuracies.
             '''
             )
         with st.expander('Reading list about the project'):
