@@ -138,7 +138,7 @@ df_dois = None
 
 radio = st.radio('Select an option', ['Insert DOIs', 'Upload a file with DOIs'])
 if radio == 'Insert DOIs':
-    st.write('Please insert DOIs (commencing "10.") in separarate rows. Maximum **500 DOIs permitted**!')
+    st.write('Please insert [DOIs](https://www.doi.org/) (commencing "10.") in separarate rows. Maximum **500 DOIs permitted**!')
     dois = st.text_area(
         'Type or paste in one DOI per line in this box, then press Ctrl+Enter.', 
         help='DOIs will be without a hyperlink such as 10.1136/bmjgh-2023-013696',
