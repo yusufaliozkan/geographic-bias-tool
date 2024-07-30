@@ -114,7 +114,7 @@ with col1:
             This may not always give the best result as similar names can be listed under the same author profile page. 
             Check the note section at the bottom after performing your search.
 
-            * The World Bank's GNI per capita ranking is considered as a robust indicator of country income level. . However, there are some caveats on the data. 
+            * The World Bank's GNI per capita ranking is considered as a robust indicator of country income level. However, there are some caveats on the data. 
             The classification terms can be arbitraty or outdated.
 
             * Citation Source Index (CSI) and this tool should not be used to compare research outputs or the datasets. 
