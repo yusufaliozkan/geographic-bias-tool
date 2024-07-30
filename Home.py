@@ -101,7 +101,7 @@ with col1:
             Country income statuses are retrieved from [World Bank API](https://api.worldbank.org/v2/country/?per_page=1000).
             '''
             )
-        with st.expander('Limitations'):
+        with st.expander('Limitations and caveats'):
             st.write(f'''
             * The tool searches author affiliations with DOIs. Items without a DOI will be excluded from the search. 
             Some output types (such as journal articles) are usually assigned more DOIs than other types. 
@@ -122,6 +122,7 @@ with col1:
             The tool should be used to understand the nature of sources from the affiliation point of view.
 
             * Bear in mind that this tool does not show authors' country of origin or background but shows the affiliated country where the author wrote the paper.
+            For instance, the author affiliation of the United Kingdom doesn't necessarily mean that the author is originally from the United Kingdom.  
 
             * The country information is sourced from OpenAlex and may be adjusted to align with the country names used by the World Bank to generate the CSI. 
             As a result, certain country names and disputed territories might be displayed differently or not be displayed in this tool. 
