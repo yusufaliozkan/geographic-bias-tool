@@ -41,6 +41,10 @@ with st.sidebar:
 
         Although every effort is made to ensure accuracy and the tool is operational, the support may not be guaranteed. 
         Bear in mind that there might be some technical issues caused by OpenAlex or Streamlit.
+
+        The country information is retrieved from OpenAlex and might be changed in order to match it to the country name in the World Bank list. 
+        Therefore, some country names and disputed territories may not be shown in this tool. 
+        The creator of this tool will not accept any responsibility for this.
         ''')
     with st.expander('Contact'):
         st.write('For your questions, you can contact [Yusuf Ozkan, Research Outputs Analyst](https://profiles.imperial.ac.uk/y.ozkan) at Imperial College London.')
@@ -116,6 +120,12 @@ with col1:
             * Citation Source Index (CSI) and this tool should not be used to compare research outputs or the datasets. 
             Having a low or high CSI does not signify the quality of individual paper or a set of outputs.
             The tool should be used to understand the nature of sources from the affiliation point of view.
+
+            * Bear in mind that this tool does not show authors' country of origin or background but shows the affiliated country where the author wrote the paper.
+
+            * The country information is retrieved from OpenAlex and might be changed in order to match it to the country name in the World Bank list. 
+            Therefore, some country names and disputed territories may not be shown in this tool. 
+            The creator of this tool will not accept any responsibility for this.
             '''
             )
         with st.expander('Reading list about the project'):
