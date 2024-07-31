@@ -150,6 +150,7 @@ with col1:
 
             ''')
 
+st.write('---')
 df_dois = None
 
 radio = st.radio('Select an option', ['Insert DOIs', 'Upload a file with DOIs'])
