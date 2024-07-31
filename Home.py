@@ -17,7 +17,7 @@ st.set_page_config(layout = "wide",
                     initial_sidebar_state="auto") 
 pd.set_option('display.max_colwidth', None)
 
-create_page = st.navigation(st.Page('testing.py'), title='Testing page')
+create_page = st.navigation(st.Page('testing.py'))
 pg = st.navigation([create_page]) 
 pg.run
 
