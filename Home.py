@@ -11,8 +11,8 @@ import numpy as np
 import plotly.express as px
 import time
 
-home_page = st.Page("Home.py", title="Home", icon=":house:")
-testing_page = st.Page("testing.py", title="Testing", icon=":microscope:")
+home_page = st.Page("Home.py", title="Home")
+testing_page = st.Page("testing.py", title="Testing")
 
 # Set up navigation
 pg = st.navigation([home_page, testing_page])
