@@ -11,5 +11,8 @@ import numpy as np
 import plotly.express as px
 import time
 
+st.set_page_config(page_title="Geographic Bias Tool", 
+                   page_icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtoX76TyVQs-o1vEvNuAnYX0zahtSui173gg&s")
+
 
 st.write('Testing page')
