@@ -11,11 +11,16 @@ import numpy as np
 import plotly.express as px
 import time
 
+testing_page = st.Page('testing.py')
+pg = st.navigation([testing_page])
+
 st.set_page_config(layout = "wide", 
                     page_title='Geographic Bias Tool',
                     page_icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtoX76TyVQs-o1vEvNuAnYX0zahtSui173gg&s",
                     initial_sidebar_state="auto") 
 pd.set_option('display.max_colwidth', None)
+
+pg.run()
 
 st.logo(
     image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtoX76TyVQs-o1vEvNuAnYX0zahtSui173gg&s',
