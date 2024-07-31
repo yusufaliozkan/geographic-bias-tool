@@ -150,7 +150,8 @@ with col1:
 
             ''')
 
-st.write('---')
+st.divider()
+
 df_dois = None
 
 radio = st.radio('Select an option', ['Insert DOIs', 'Upload a file with DOIs'])
