@@ -17,8 +17,11 @@ st.set_page_config(layout = "wide",
                     initial_sidebar_state="auto") 
 pd.set_option('display.max_colwidth', None)
 
-# pg = st.navigation([st.Page("testing.py")])
-# pg.run()
+testing_page = st.Page('testing.py', title='Testing page')
+pg = st.navigation([testing_page])
+st.set_page_config(page_title="Data manager")
+pg.run()
+
 
 with st.sidebar:
     st.markdown(
