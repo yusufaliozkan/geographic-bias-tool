@@ -11,9 +11,9 @@ import numpy as np
 import plotly.express as px
 import time
 
-testing_page = st.Page('testing.py', title='Testing page')
-pg = st.navigation([testing_page])
-pg.run()
+# testing_page = st.Page('testing.py', title='Testing page')
+# pg = st.navigation([testing_page])
+# pg.run()
 
 st.set_page_config(layout = "wide", 
                     page_title='Geographic Bias Tool',
