@@ -18,11 +18,8 @@ st.set_page_config(layout = "wide",
 pd.set_option('display.max_colwidth', None)
 
 st.logo(
-    image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtoX76TyVQs-o1vEvNuAnYX0zahtSui173gg&s',
-    icon_image="""<a href="https://www.imperial.ac.uk">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png" width="150">
-        </a>
-        """
+    image='https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png',
+    icon_image='https://upload.wikimedia.org/wikipedia/commons/0/06/Imperial_College_London_new_logo.png'
     )
 
 with st.sidebar:
