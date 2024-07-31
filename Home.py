@@ -13,7 +13,6 @@ import time
 
 testing_page = st.Page('testing.py', title='Testing page')
 pg = st.navigation([testing_page])
-st.set_page_config(page_title="Data manager")
 pg.run()
 
 st.set_page_config(layout = "wide", 
