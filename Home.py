@@ -526,10 +526,7 @@ else:
                         country_counts = country_counts.sort_values(by='Rank', ascending=True).reset_index(drop=True)
                         st.subheader(
                             'Author country affiliations, country ranks, and income statuses',
-                            help='''
-                            Countries are ranked in reverse order, with wealthier countries having lower ranks. 
-                            For instance, the UK is ranked 180. This inverse ranking is intentional for calculating the CSI.
-                            '''
+                            help='Countries are ranked in reverse order, with wealthier countries having lower ranks. For instance, the UK is ranked 180. This inverse ranking is intentional for calculating the CSI.'
                         )
                         country_counts
                     with col2:
