@@ -79,13 +79,13 @@ with col1:
         '''
         )
 
-        with st.expander('Who developed?'):
+        with st.expander('Who developed the Geographic Bias Tool?'):
             st.write('''
             Geographic Bias Tool has been developed by [Imperial College London](https://www.imperial.ac.uk/admin-services/library/learning-support/geo-bias/).
             '''
             )
 
-        with st.expander('What is Citation Source Index (CSI)?'):
+        with st.expander('What is the Citation Source Index (CSI)?'):
             st.write('''
             Citation Source Index (CSI) is a weighted average of the World Bank rankings for Gross National Income (GNI) per capita of the countries where the authors in that citation are from. 
 
@@ -98,7 +98,7 @@ with col1:
             '''
             )
 
-        with st.expander('Where the data comes from?'):
+        with st.expander('Where does the data come from?'):
             st.write('''
             Publications data (title, author name(s), country affiliations) are retrieved through [OpenAlex API](https://docs.openalex.org/how-to-use-the-api/api-overview).
 
@@ -107,7 +107,7 @@ with col1:
             Country income statuses are retrieved from [World Bank API](https://api.worldbank.org/v2/country/?per_page=1000).
             '''
             )
-        with st.expander('Limitations and caveats'):
+        with st.expander('Limitations and caveats of the tool'):
             st.write(f'''
             * The tool searches author affiliations with DOIs. Items without a DOI will be excluded from the search. 
             Some output types (such as journal articles) are usually assigned more DOIs than other types. 
