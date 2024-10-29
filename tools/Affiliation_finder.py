@@ -11,7 +11,8 @@ import numpy as np
 import plotly.express as px
 import time
 from sidebar_content import sidebar_content
-
+from countryinfo import CountryInfo
+import pydeck as pdk
 
 st.set_page_config(layout = "wide", 
                     page_title='Geographic Bias Tool',
@@ -51,7 +52,7 @@ col1, col2 = st.columns([3,2])
 with col1:
     col1, col2 = st.columns(2)
     with col1:
-        with st.popover('About this tool', use_container_width=False):
+        with st.popover('About this tool', use_container_width=False, icon=":material/info:"):
     
             st.write('''
             Geographic Bias Tool aims to present data on the diversity of countries and country income level of authors. 
@@ -133,7 +134,8 @@ with col1:
     with col2:
         if st.button(
             "Home", 
-            help='Go to Home page'
+            help='Go to Home page',
+            icon=":material/home:"
             ):
             st.switch_page("home/Home.py")
 st.divider()
@@ -452,48 +454,6 @@ else:
                         st.metric(label=f'Number of unique authors', value=f'{no_authors}')
                     with col3:
                         st.metric(label=f'Number of unique author countries', value=f'{no_country}')
-                    
-                    @st.experimental_fragment
-                    def gbi_tool():
-                        on = st.toggle('Display dashboard for country breakdown')
-                        if on:
-                            col1, col2 = st.columns([3,2])
-                            with col1:
-                                st.write('Dashboard')
-                                country_counts = df_authorships['Country Name'].value_counts().reset_index()
-                                country_counts.columns = ['Country Name', 'Count']
-                                fig = px.bar(country_counts, x='Country Name', y='Count', title='Country Counts')
-                                col1.plotly_chart(fig, use_container_width = True)
-                                country_counts = pd.merge(country_counts, df_result, on='Country Name')
-                                country_counts = country_counts.drop(columns=['Unnamed: 0', 'Country Code 3', 'Country Code 2', 'name', 'Year','GNI'])
-                                columns = ['Country Name', 'Rank', 'incomeLevel', 'Count']
-                                country_counts = country_counts[columns]
-                                country_counts = country_counts.sort_values(by='Rank', ascending=True).reset_index(drop=True)
-                            with col1:
-                                income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
-                                income_level_counts.columns = ['Income Level', 'Count']
-                                fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
-                                col2.plotly_chart(fig2, use_container_width = True)
-                            col1, col2 = st.columns([3,1])
-                            with col1:
-                                fig = px.choropleth(
-                                    country_counts,
-                                    locations='Country Name',
-                                    locationmode='country names',
-                                    color='Count',
-                                    hover_name='Country Name',
-                                    color_continuous_scale='Viridis',
-                                    title='Author Affiliations on Map'
-                                )
-                                fig.update_layout(
-                                    width=1200,  # Set the width as per your requirement
-                                    height=700   # Set the height as per your requirement
-                                )
-                                col1.plotly_chart(fig, use_container_width=True)
-                            with col2:
-                                fig3 = px.box(df_final, y= 'Citation Source Index', title='Box Plot of Citation Source Index')
-                                col2.plotly_chart(fig3, use_container_width = True)                   
-                    gbi_tool()
 
                     col1, col2 = st.columns([3,2])
                     with col1:
@@ -517,7 +477,92 @@ else:
                     with col2:
                         if not np.isnan(citation_source_index):
                             fig3 = px.box(df_final, y= 'Citation Source Index', title='Box Plot of Citation Source Index')
-                            col2.plotly_chart(fig3, use_container_width = True)  
+                            col2.plotly_chart(fig3, use_container_width = True) 
+
+                    @st.experimental_fragment
+                    def gbi_tool():
+                        col1, col2 = st.columns([3,2])
+                        with col1:
+                            country_counts = df_authorships['Country Name'].value_counts().reset_index()
+                            country_counts.columns = ['Country Name', 'Count']
+                            fig = px.bar(country_counts, x='Country Name', y='Count', title='Country Counts')
+                            col1.plotly_chart(fig, use_container_width = True)
+                            country_counts = pd.merge(country_counts, df_result, on='Country Name')
+                            country_counts = country_counts.drop(columns=['Unnamed: 0', 'Country Code 3', 'Country Code 2', 'name', 'Year','GNI'])
+                            columns = ['Country Name', 'Rank', 'incomeLevel', 'Count']
+                            country_counts = country_counts[columns]
+                            country_counts = country_counts.sort_values(by='Rank', ascending=True).reset_index(drop=True)
+                        with col1:
+                            income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
+                            income_level_counts.columns = ['Income Level', 'Count']
+                            fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
+                            col2.plotly_chart(fig2, use_container_width = True)
+
+                        st.subheader('Author country affiliations', anchor=False)
+                        col1, col2 = st.columns([5,2])
+                        with col1:
+                            # Function to get coordinates
+                            def get_coordinates(country_name):
+                                try:
+                                    country = CountryInfo(country_name)
+                                    return country.info().get('latlng', (None, None))
+                                except KeyError:
+                                    return None, None
+
+                            # Apply the function to each country to get latitude and longitude
+                            country_counts[['Latitude', 'Longitude']] = country_counts['Country Name'].apply(lambda x: pd.Series(get_coordinates(x)))
+
+                            # Set a scaling factor and minimum radius to make circles larger
+                            scaling_factor = 10000  # Adjust this to control the overall size of the circles
+                            minimum_radius = 100000  # Minimum radius for visibility of all points
+
+                            # Calculate the circle size based on `Count`
+                            country_counts['size'] = country_counts['Count'] * scaling_factor + minimum_radius
+
+                            # Filter out rows where coordinates were not found
+                            country_counts = country_counts.dropna(subset=['Latitude', 'Longitude'])
+
+                            # ScatterplotLayer to show countries and their mentions count
+                            scatterplot_layer = pdk.Layer(
+                                "ScatterplotLayer",
+                                data=country_counts,
+                                get_position=["Longitude", "Latitude"],
+                                get_radius="size",
+                                get_fill_color="[255, 140, 0, 160]",  # Adjusted color with opacity
+                                pickable=True,
+                                auto_highlight=True,
+                                id="country-mentions-layer",
+                            )
+
+                            # Define the view state of the map
+                            view_state = pdk.ViewState(
+                                latitude=20, longitude=0, zoom=1, pitch=30
+                            )
+
+                            # Create the Deck with the layer, view state, and map style
+                            chart = pdk.Deck(
+                                layers=[scatterplot_layer],
+                                initial_view_state=view_state,
+                                tooltip={"text": "{Country Name}\n# Authors: {Count}"},
+                                map_style="mapbox://styles/mapbox/light-v9"  # Use a light map style
+                            )
+                            st.pydeck_chart(chart, use_container_width=False)
+                        with col2:
+                            country_counts = df_authorships['Country Name'].value_counts().reset_index()
+                            country_counts.columns = ['Country Name', 'Count']
+                            country_counts = pd.merge(country_counts, df_result, on='Country Name')
+                            country_counts = country_counts.drop(columns=['Unnamed: 0', 'Country Code 3', 'Country Code 2', 'name', 'Year','GNI'])
+                            columns = ['Country Name', 'incomeLevel', 'Count']
+                            country_counts = country_counts[columns]
+                            new_column_names = {
+                                'incomeLevel': 'Income Level',
+                                'Count': 'Author Count',
+                            }
+                            country_counts = country_counts.rename(columns=new_column_names)
+                            country_counts = country_counts.sort_values(by='Author Count', ascending=False).reset_index(drop=True)
+                            st.dataframe(country_counts, hide_index=True, use_container_width=True, height=500)
+                    gbi_tool()
+ 
                     @st.experimental_fragment
                     def display_table():
                         display = st.checkbox('Display publications')
