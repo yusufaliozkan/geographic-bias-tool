@@ -407,7 +407,7 @@ else:
                                 Therefore, the results should be verified with checking the research article directly if necessary.
                                 ''')
                         if "guide" not in st.session_state:
-                            if st.button("Important note"):
+                            if st.button("Important note", icon=":material/warning:"):
                                 guide("Important note")
                         container_refresh_button = st.container()
                     important_note()
