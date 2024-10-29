@@ -214,7 +214,7 @@ else:
 
         col1, col2 = st.columns(2)
         with col1:
-            submit = st.button('Calculate Citation Source Index')
+            submit = st.button('Calculate Citation Source Index', icon=":material/search:")
         with col2:
             exclude_author_profile_page = st.checkbox(
                 'Do not show affiliations from the author profile page',
