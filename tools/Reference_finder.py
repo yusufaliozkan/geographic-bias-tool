@@ -485,7 +485,7 @@ else:
 
                             # Set a scaling factor and minimum radius to make circles larger
                             scaling_factor = 5000  # Adjust this to control the overall size of the circles
-                            minimum_radius = 100000  # Minimum radius for visibility of all points
+                            minimum_radius = 10000  # Minimum radius for visibility of all points
 
                             # Calculate the circle size based on `Count`
                             country_counts['size'] = country_counts['Count'] * scaling_factor + minimum_radius
