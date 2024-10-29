@@ -1,5 +1,5 @@
 # Geographic Bias Tool
-Geographic Bias Tool aims to present data on the diversity of countries and country income level of authors. You can submit DOIs of publications to see the authors' country affiliations and country income statuses.
+[Geographic Bias Tool](https://geographic-bias-tool.streamlit.app/) aims to present data on the diversity of countries and country income level of authors. You can submit DOIs of publications to see the authors' country affiliations and country income statuses.
 The tool aims to identify authors of given DOIs and found their country affiliations. Countries are ranked based on [World Bank GNI per capita, Atlas method](https://data.worldbank.org/indicator/NY.GNP.PCAP.CD). 
 The [Citation Source Index](https://github.com/yusufaliozkan/geographic-bias-tool/tree/main?tab=readme-ov-file#what-is-citation-source-index-csi) is calculated to show the geographic bias of the given publication set.
 # Who developed the Geographic Bias Tool?
