@@ -484,8 +484,8 @@ else:
                             country_counts[['Latitude', 'Longitude']] = country_counts['Country Name'].apply(lambda x: pd.Series(get_coordinates(x)))
 
                             # Set a scaling factor and minimum radius to make circles larger
-                            scaling_factor = 5000  # Adjust this to control the overall size of the circles
-                            minimum_radius = 10000  # Minimum radius for visibility of all points
+                            scaling_factor = 50000  # Adjust this to control the overall size of the circles
+                            minimum_radius = 100000  # Minimum radius for visibility of all points
 
                             # Calculate the circle size based on `Count`
                             country_counts['size'] = country_counts['Count'] * scaling_factor + minimum_radius
