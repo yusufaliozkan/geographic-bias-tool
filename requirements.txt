@@ -1,6 +1,7 @@
-streamlit==1.36.0
+streamlit==1.39.0
 pandas==2.2.2
 requests==2.32.3
 numpy==2.0.1
 plotly==5.13.1
 matplotlib==3.9.1
+countryinfo==0.1.2
