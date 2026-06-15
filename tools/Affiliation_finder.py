@@ -517,7 +517,7 @@ else:
 
                     ## GNI CALCULATIONS
                     df = pd.read_csv(
-                        'API_NY.GNP.PCAP.CD_DS2_en_csv_v2_87359.csv',
+                        'API_NY.GNP.PCAP.CD_DS2_en_csv_v2_1519779.csv',
                         skiprows=4,  # Example: skipping the first 4 rows if they are not needed
                         delimiter=',',  # Adjust delimiter if it's not a comma
                     )
