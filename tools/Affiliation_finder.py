@@ -141,6 +141,19 @@ with col1:
             st.switch_page("home/Home.py")
 st.divider()
 
+st.markdown("""
+    <style>
+    [data-testid="stMetricValue"] {
+        font-size: 2rem;
+        color: #E87722;
+    }
+    [data-testid="stMetricLabel"] {
+        font-size: 0.9rem;
+        color: #555;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 df_dois = None
 
 radio = st.radio('Select an option', ['Insert DOIs', 'Upload a file with DOIs'])
@@ -313,49 +326,78 @@ else:
 
                 unique_dois = df_dois['doi'].dropna().unique().tolist()
 
+                def fetch_batch(doi_batch, session=None):
+                    filter_str = "|".join(doi_batch)
+                    url = f"https://api.openalex.org/works?filter=doi:{filter_str}&per-page=50"
+                    for attempt in range(4):
+                        try:
+                            response = (session or requests).get(url, timeout=15)
+                            if response.status_code == 200:
+                                return response.json().get('results', [])
+                            if response.status_code == 429:
+                                time.sleep(2 * (attempt + 1))
+                                continue
+                            return []
+                        except requests.exceptions.Timeout:
+                            if attempt < 3:
+                                time.sleep(2 * (attempt + 1))
+                            continue
+                        except requests.RequestException:
+                            return []
+                    return []
+
+                def chunks(lst, n):
+                    for i in range(0, len(lst), n):
+                        yield lst[i:i + n]
+
+                BATCH_SIZE = 50
+
                 with requests.Session() as session:
+                    session.headers.update({"User-Agent": "mailto:your@email.ac.uk"})
+                    batches = list(chunks(unique_dois, BATCH_SIZE))
                     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
                         futures = {
-                            executor.submit(fetch_authorship_info_and_count, doi, session): doi
-                            for doi in unique_dois
+                            executor.submit(fetch_batch, batch, session): batch
+                            for batch in batches
                         }
+                        progress_bar = st.progress(0, text="Fetching DOIs...")
+                        completed = 0
+                        total = len(batches)
 
                         for future in as_completed(futures):
-                            result = future.result()
+                            batch = futures[future]
+                            results = future.result()
+                            found_dois = {r.get('doi', '').replace('https://doi.org/', '') for r in results}
+                            for doi in batch:
+                                if doi not in found_dois:
+                                    failed_dois.append({"doi": doi, "error": "not_found_in_batch"})
+                            for data in results:
+                                doi = data.get('doi', '').replace('https://doi.org/', '')
+                                title = data.get('title', '')
+                                authorship_info = data.get('authorships', [])
+                                author_count = len(authorship_info)
+                                for author in authorship_info:
+                                    country_codes = author.get('countries', [])
+                                    source = 'article page'
+                                    if not country_codes:
+                                        country_codes = ['']
+                                        source = 'author profile page'
+                                    for country_code in country_codes:
+                                        authorship_data.append({
+                                            'doi': doi,
+                                            'title': title,
+                                            'author_position': author.get('author_position', ''),
+                                            'author_name': author.get('author', {}).get('display_name', ''),
+                                            'author_id': author.get('author', {}).get('id', ''),
+                                            'Country Code 2': country_code,
+                                            'source': source,
+                                            'author_count': author_count
+                                        })
+                            # ✅ Increment and update ONCE per batch, after all its data is processed
+                            completed += 1
+                            progress_bar.progress(completed / total, text=f"Processed batch {completed} of {total}...")
 
-                            if result["error"] is not None:
-                                failed_dois.append({
-                                    "doi": result["doi"],
-                                    "error": result["error"]
-                                })
-                                continue
-
-                            doi = result["doi"]
-                            title = result["title"]
-                            authorship_info = result["authorship_info"]
-                            author_count = result["author_count"]
-
-                            for author in authorship_info:
-                                country_codes = author.get('countries', [])
-                                source = 'article page'
-
-                                if not country_codes:
-                                    country_codes = ['']
-                                    source = 'author profile page'
-
-                                for country_code in country_codes:
-                                    author_record = {
-                                        'doi': doi,
-                                        'title': title,
-                                        'author_position': author.get('author_position', ''),
-                                        'author_name': author.get('author', {}).get('display_name', ''),
-                                        'author_id': author.get('author', {}).get('id', ''),
-                                        'Country Code 2': country_code,
-                                        'source': source,
-                                        'author_count': author_count
-                                    }
-                                    authorship_data.append(author_record)
-
+                        progress_bar.empty()
                 df_authorships = pd.DataFrame(authorship_data)
                 openalex_found_dois = len(df_authorships)
                 if openalex_found_dois == 0:
@@ -376,17 +418,7 @@ else:
                     # Add 'api.' between 'https://' and 'openalex' in the 'author_id' column
                     df_authorships['author_id'] = df_authorships['author_id'].apply(lambda x: x.replace('https://', 'https://api.') if x else x)
 
-                    def fetch_authorship_info_and_count(doi):
-                        url = f"https://api.openalex.org/works/doi:{doi}"
-                        response = requests.get(url)
-                        if response.status_code == 200:
-                            data = response.json()
-                            title = data.get('title', '')
-                            authorship_info = data.get('authorships', [])
-                            author_count = len(authorship_info)
-                            return title, authorship_info, author_count
-                        else:
-                            return '', [], 0
+
 
 
                     def fetch_author_details(author_id, session=None):
@@ -596,6 +628,15 @@ else:
                         'author_count':'Author count'
                     })
 
+                    csv = df_final.to_csv(index=False).encode('utf-8')
+                    st.download_button(
+                        label="Download results as CSV",
+                        data=csv,
+                        file_name='affiliation_results.csv',
+                        mime='text/csv',
+                        icon=":material/download:"
+                    )
+
                     no_authors = df_authorships['author_name'].nunique()
                     no_doi_found = df_final['DOI'].nunique()
                     no_country = df_authorships['Country Code 3'].nunique()
@@ -644,7 +685,21 @@ else:
                         with col1:
                             country_counts = df_authorships['Country Name'].value_counts().reset_index()
                             country_counts.columns = ['Country Name', 'Count']
-                            fig = px.bar(country_counts, x='Country Name', y='Count', title='Country Counts')
+                            fig = px.bar(
+                                country_counts,
+                                x='Country Name',
+                                y='Count',
+                                title='Author Countries',
+                                color='Count',
+                                color_continuous_scale='Oranges',
+                                template='plotly_white'
+                            )
+                            fig.update_layout(
+                                xaxis_title='',
+                                yaxis_title='Number of Authors',
+                                coloraxis_showscale=False,
+                                title_font_size=16
+                            )
                             fig.update_xaxes(tickangle=-45)
                             col1.plotly_chart(fig, use_container_width = True)
                             country_counts = pd.merge(country_counts, df_result, on='Country Name')
@@ -655,7 +710,23 @@ else:
                         with col1:
                             income_level_counts = df_authorships['incomeLevel'].value_counts().reset_index()
                             income_level_counts.columns = ['Income Level', 'Count']
-                            fig2 = px.pie(income_level_counts, names='Income Level', values='Count', title='Income Level Counts')
+                            fig2 = px.pie(
+                                income_level_counts,
+                                names='Income Level',
+                                values='Count',
+                                title='Author Income Levels',
+                                hole=0.4,
+                                color_discrete_sequence=[
+                                    '#2E86AB',  # blue - High income
+                                    '#E84855',  # red - Upper middle income
+                                    '#F4A261',  # orange - Lower middle income
+                                    '#2A9D8F',  # teal - Low income
+                                    '#AAAAAA',  # grey - No country info
+                                ],
+                                template='plotly_white'
+                            )
+                            fig2.update_traces(textposition='outside', textinfo='percent+label')
+                            fig2.update_layout(showlegend=False)
                             col2.plotly_chart(fig2, use_container_width = True)
 
                         st.subheader('Author country affiliations', anchor=False)
